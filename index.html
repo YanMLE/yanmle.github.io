@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .calculator {
+        width: 300px;
+        margin: 50px auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .calculator input[type="button"] {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        margin: 5px;
+        cursor: pointer;
+    }
+    .calculator input[type="text"] {
+        width: 100%;
+        height: 50px;
+        font-size: 24px;
+        text-align: right;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    <input type="button" value="(" onclick="addToDisplay('(')">
+    <input type="button" value=")" onclick="addToDisplay(')')">
+    <input type="button" value="%" onclick="calculatePercentage()">
+    <input type="button" value="C" onclick="clearDisplay()"><br>
+    <input type="button" value="7" onclick="addToDisplay('7')">
+    <input type="button" value="8" onclick="addToDisplay('8')">
+    <input type="button" value="9" onclick="addToDisplay('9')">
+    <input type="button" value="/" onclick="addToDisplay('/')"><br>
+    <input type="button" value="4" onclick="addToDisplay('4')">
+    <input type="button" value="5" onclick="addToDisplay('5')">
+    <input type="button" value="6" onclick="addToDisplay('6')">
+    <input type="button" value="*" onclick="addToDisplay('*')"><br>
+    <input type="button" value="1" onclick="addToDisplay('1')">
+    <input type="button" value="2" onclick="addToDisplay('2')">
+    <input type="button" value="3" onclick="addToDisplay('3')">
+    <input type="button" value="-" onclick="addToDisplay('-')"><br>
+    <input type="button" value="0" onclick="addToDisplay('0')">
+    <input type="button" value="." onclick="addToDisplay('.')">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="+" onclick="addToDisplay('+')">
+</div>
+
+<script>
+    function addToDisplay(value) {
+        var display = document.getElementById('display');
+        var currentValue = display.value;
+
+        if (value === '(') {
+            if (!currentValue || currentValue.slice(-1).match(/[/*\-+\(]/)) {
+                display.value += value;
+            } else if (currentValue.slice(-1).match(/\d|\)/)) {
+                display.value += '*(';
+            }
+        } else if (value === ')') {
+            var openParenCount = (currentValue.match(/\(/g) || []).length;
+            var closeParenCount = (currentValue.match(/\)/g) || []).length;
+            if (openParenCount > closeParenCount) {
+                display.value += value;
+            } else if (openParenCount > closeParenCount || currentValue.slice(-1).match(/\d|\)/)) {
+                display.value += "*(1)";
+            } else {
+                display.value += "(0)";
+            }
+        } else if (currentValue.slice(-1) === ')' && !isNaN(value)) {
+            value = '*' + value;
+            display.value += value;
+        } else {
+            display.value += value;
+        }
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+        var expression = document.getElementById('display').value;
+        try {
+            var result = eval(expression);
+            document.getElementById('display').value = result;
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+
+    function calculatePercentage() {
+        var display = document.getElementById('display');
+        var currentValue = display.value;
+        try {
+            var result = eval(currentValue) / 100;
+            document.getElementById('display').value = result;
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+</script>
+
+</body>
+</html>
