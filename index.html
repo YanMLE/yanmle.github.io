@@ -95,8 +95,13 @@
     function calculate() {
         var expression = document.getElementById('display').value;
         try {
-            var result = eval(expression);
-            document.getElementById('display').value = result;
+            if (expression === '') {
+                document.getElementById('display').value = '0';
+            }
+            else {
+                var result = eval(expression);
+                document.getElementById('display').value = result;
+            }
         } catch (error) {
             document.getElementById('display').value = 'Error';
         }
