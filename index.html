@@ -129,7 +129,7 @@ button.equal {
         var expression = document.getElementById('display').value;
         try {
             var result = eval(expression);
-            document.getElementById('display').value = result;
+            document.getElementById('display').value = parseFloat(result.toFixed(10));
         } catch (error) {
             document.getElementById('display').value = 'Error';
         }
@@ -140,7 +140,7 @@ button.equal {
         var currentValue = display.value;
         try {
             var result = eval(currentValue) / 100;
-            document.getElementById('display').value = result;
+            document.getElementById('display').value = parseFloat(result.toFixed(10));
         } catch (error) {
             document.getElementById('display').value = 'Error';
         }
