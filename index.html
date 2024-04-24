@@ -6,93 +6,163 @@
 <title>Calculadora Braba</title>
 <style>
     body {
-  background-color: #000;
-  color: #ccc;
-  font-family: Arial, sans-serif;
-}
+        background-color: #000;
+        color: #ccc;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-.calculator {
-  width: 300px;
-  margin: 100px auto;
-  background-color: #222;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
 
-#display {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #333;
-  color: #ccc;
-  border: none;
-  border-radius: 5px;
-}
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
 
-.keys {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-}
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
 
-button {
-  padding: 15px;
-  font-size: 18px;
-  background-color: #444;
-  color: #ccc;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
 
-button:hover {
-  background-color: #555;
-}
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+    
+    .calculator {
+        width: 300px;
+        margin: 100px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
 
+    #display {
+        width: calc(100% - 40px); 
+        padding: 20px; 
+        margin-bottom: 10px;
+        background-color: #333;
+        color: #ccc;
+        border: none;
+        border-radius: 5px;
+        font-size: 24px; 
+    }
 
-button.operator {
-  color: #ff8800;
-}
+    .keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
 
-button.clear {
-  background-color: #ff4444;
-}
+    button {
+        padding: 15px;
+        font-size: 18px;
+        background-color: #444;
+        color: #ccc;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-button.equal {
-  background-color: #ff8800;
-}
+    button:hover {
+        background-color: #555;
+    }
+
+    button.operator {
+        color: #ff8800;
+    }
+
+    button.clear {
+        background-color: #ff4444;
+    }
+
+    button.equal {
+        background-color: #ff8800;
+    }
 </style>
 </head>
 <body>
 
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+    <a href="calculator.html">Calculadora Científica</a>
+</div>
+
+<div class="content" id="content">
+    <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776; Menu</span>
+
     <div class="calculator">
         <input type="text" id="display" readonly>
         <div class="keys">
-          <button class="clear" onclick="clearDisplay()">C</button>
-          <button class="number" onclick="addToDisplay('.')">.</button>
-          <button class="operator" onclick="calculatePercentage()">%</button>
-          <button class="operator" onclick="addToDisplay('+')">+</button>
-          <button class="number" onclick="addToDisplay('7')">7</button>
-          <button class="number" onclick="addToDisplay('8')">8</button>
-          <button class="number" onclick="addToDisplay('9')">9</button>
-          <button class="operator" onclick="addToDisplay('-')">-</button>
-          <button class="number" onclick="addToDisplay('4')">4</button>
-          <button class="number" onclick="addToDisplay('5')">5</button>
-          <button class="number" onclick="addToDisplay('6')">6</button>
-          <button class="operator" onclick="addToDisplay('*')">×</button>
-          <button class="number" onclick="addToDisplay('1')">1</button>
-          <button class="number" onclick="addToDisplay('2')">2</button>
-          <button class="number" onclick="addToDisplay('3')">3</button>
-          <button class="operator" onclick="addToDisplay('/')">÷</button>
-          <button class="operator" onclick="addToDisplay('(')">(</button>
-          <button class="number" onclick="addToDisplay('0')">0</button>
-          <button class="operator" onclick="addToDisplay(')')">)</button>
-          <button class="equal" onclick="calculate()">=</button>
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="number" onclick="addToDisplay('.')">.</button>
+            <button class="operator" onclick="calculatePercentage()">%</button>
+            <button class="operator" onclick="addToDisplay('+')">+</button>
+            <button class="number" onclick="addToDisplay('7')">7</button>
+            <button class="number" onclick="addToDisplay('8')">8</button>
+            <button class="number" onclick="addToDisplay('9')">9</button>
+            <button class="operator" onclick="addToDisplay('-')">-</button>
+            <button class="number" onclick="addToDisplay('4')">4</button>
+            <button class="number" onclick="addToDisplay('5')">5</button>
+            <button class="number" onclick="addToDisplay('6')">6</button>
+            <button class="operator" onclick="addToDisplay('*')">×</button>
+            <button class="number" onclick="addToDisplay('1')">1</button>
+            <button class="number" onclick="addToDisplay('2')">2</button>
+            <button class="number" onclick="addToDisplay('3')">3</button>
+            <button class="operator" onclick="addToDisplay('/')">÷</button>
+            <button class="operator" onclick="addToDisplay('(')">(</button>
+            <button class="number" onclick="addToDisplay('0')">0</button>
+            <button class="operator" onclick="addToDisplay(')')">)</button>
+            <button class="equal" onclick="calculate()">=</button>
         </div>
-      </div>
+    </div>
+</div>
 
 <script>
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+    function adjustFontSize() {
+        var display = document.getElementById('display');
+        var length = display.value.length;
+        var fontSize = 24; 
+        if (length > 19) { 
+            fontSize -= (length - 19) * 0.5; 
+        }
+        display.style.fontSize = fontSize + 'px'; 
+    }
+
     function addToDisplay(value) {
         var display = document.getElementById('display');
         var currentValue = display.value;
@@ -119,10 +189,13 @@ button.equal {
         } else {
             display.value += value;
         }
+
+        adjustFontSize(); 
     }
 
     function clearDisplay() {
         document.getElementById('display').value = '';
+        adjustFontSize(); 
     }
 
     function calculate() {
@@ -133,6 +206,7 @@ button.equal {
         } catch (error) {
             document.getElementById('display').value = 'Error';
         }
+        adjustFontSize();
     }
 
     function calculatePercentage() {
@@ -144,6 +218,7 @@ button.equal {
         } catch (error) {
             document.getElementById('display').value = 'Error';
         }
+        adjustFontSize();
     }
 </script>
 
