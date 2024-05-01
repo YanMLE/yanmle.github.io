@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Braba</title>
+<style>
+    body {
+  background-color: #000;
+  color: #ccc;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+.calculator {
+  width: 300px;
+  margin: 100px auto;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#display {
+  width: calc(100% - 40px); 
+  padding: 20px; 
+  margin-bottom: 10px;
+  background-color: #333;
+  color: #ccc;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px; 
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+}
+
+button {
+  padding: 15px;
+  font-size: 18px;
+  background-color: #444;
+  color: #ccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+
+button.operator {
+  color: #ff8800;
+}
+
+button.clear {
+  background-color: #ff4444;
+}
+
+button.equal {
+  background-color: #ff8800;
+}
+</style>
+</head>
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="index.html">Menu</a>
+        <a href="básica.html">Calculadora Simples</a>
+    </div>
+    
+    <div class="content" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="keys">
+          <button class="clear" onclick="clearDisplay()">C</button>
+          <button class="number" onclick="addToDisplay('.')">.</button>
+          <button class="operator" onclick="calculatePercentage()">%</button>
+          <button class="operator" onclick="addToDisplay('+')">+</button>
+          <button class="operator" onclick="calculateSquareRoot()">√</button>
+          <button class="number" onclick="addToDisplay('7')">7</button>
+          <button class="number" onclick="addToDisplay('8')">8</button>
+          <button class="number" onclick="addToDisplay('9')">9</button>
+          <button class="operator" onclick="addToDisplay('-')">-</button>
+          <button class="operator" onclick="calculateSine()">sin</button>
+          <button class="number" onclick="addToDisplay('4')">4</button>
+          <button class="number" onclick="addToDisplay('5')">5</button>
+          <button class="number" onclick="addToDisplay('6')">6</button>
+          <button class="operator" onclick="addToDisplay('*')">×</button>
+          <button class="operator" onclick="calculateCosine()">cos</button>
+          <button class="number" onclick="addToDisplay('1')">1</button>
+          <button class="number" onclick="addToDisplay('2')">2</button>
+          <button class="number" onclick="addToDisplay('3')">3</button>
+          <button class="operator" onclick="addToDisplay('/')">÷</button>
+          <button class="operator" onclick="calculateTangent()">tan</button>
+          <button class="operator" onclick="addToDisplay('(')">(</button>
+          <button class="number" onclick="addToDisplay('0')">0</button>
+          <button class="operator" onclick="addToDisplay(')')">)</button>
+          <button class="operator" onclick="addToDisplay('**')">Xʸ</button>
+          <button class="equal" onclick="calculate()">=</button>
+        </div>
+      </div>
+
+<script>
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+
+    function adjustFontSize() {
+        var display = document.getElementById('display');
+        var length = display.value.length;
+        var fontSize = 24; 
+        if (length > 19) { 
+            fontSize -= (length - 19) * 0.5; 
+        }
+        display.style.fontSize = fontSize + 'px'; 
+    }
+
+    function addToDisplay(value) {
+        var display = document.getElementById('display');
+        var currentValue = display.value;
+
+        if (value === '(') {
+            if (!currentValue || currentValue.slice(-1).match(/[/*\-+\(]/)) {
+                display.value += value;
+            } else if (currentValue.slice(-1).match(/\d|\)/)) {
+                display.value += '*(';
+            }
+        } else if (value === ')') {
+            var openParenCount = (currentValue.match(/\(/g) || []).length;
+            var closeParenCount = (currentValue.match(/\)/g) || []).length;
+            if (openParenCount > closeParenCount) {
+                display.value += value;
+            } else if (openParenCount > closeParenCount || currentValue.slice(-1).match(/\d|\)/)) {
+                display.value += "*(1)";
+            } else {
+                display.value += "(0)";
+            }
+        } else if (currentValue.slice(-1) === ')' && !isNaN(value)) {
+            value = '*' + value;
+            display.value += value;
+        } else {
+            display.value += value;
+        }
+
+        adjustFontSize(); 
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+        adjustFontSize(); 
+    }
+
+    function calculate() {
+        var expression = document.getElementById('display').value;
+        try {
+            var result = eval(expression);
+            document.getElementById('display').value = parseFloat(result.toFixed(10));
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+        adjustFontSize();
+    }
+
+    function calculatePercentage() {
+        var display = document.getElementById('display');
+        var currentValue = display.value;
+        try {
+            var result = eval(currentValue) / 100;
+            document.getElementById('display').value = parseFloat(result.toFixed(10));
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+        adjustFontSize();
+    }
+
+    function calculateSquareRoot() {
+        var display = document.getElementById('display');
+        var currentValue = display.value;
+        try {
+            var result = Math.sqrt(eval(currentValue));
+            document.getElementById('display').value = parseFloat(result.toFixed(10));
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+        adjustFontSize();
+    }
+
+    function calculateSine() {
+    var display = document.getElementById('display');
+    var currentValue = display.value;
+    try {
+        var radians = parseFloat(currentValue) * (Math.PI / 180); // Convertendo graus para radianos
+        var result = Math.sin(radians);
+        document.getElementById('display').value = parseFloat(result.toFixed(10));
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+    }
+    adjustFontSize();
+}
+
+function calculateCosine() {
+        var display = document.getElementById('display');
+        var currentValue = display.value;
+        try {
+            var radians = parseFloat(currentValue) * (Math.PI / 180); // Convertendo graus para radianos
+            var result = Math.cos(radians);
+            document.getElementById('display').value = parseFloat(result.toFixed(10));
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+        adjustFontSize();
+    }
+
+    function calculateTangent() {
+        var display = document.getElementById('display');
+        var currentValue = display.value;
+        try {
+            var radians = parseFloat(currentValue) * (Math.PI / 180); // Convertendo graus para radianos
+            var result = Math.tan(radians);
+            document.getElementById('display').value = parseFloat(result.toFixed(10));
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+        adjustFontSize();
+    }
+
+</script>
+
+</body>
+</html>
