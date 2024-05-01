@@ -1,228 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-adsense-account" content="ca-pub-1981226824008179">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981226824008179" crossorigin="anonymous"></script>
-<title>Calculadora Braba</title>
-<style>
-    body {
-        background-color: #000;
-        color: #ccc;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        z-index: 1000;
-    }
+        .navbar {
+            overflow: hidden;
+            background-color: #222;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
 
-    .sidebar a {
-        padding: 10px 15px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
 
-    .sidebar a:hover {
-        color: #f1f1f1;
-    }
+        .navbar a:hover {
+            background-color: #555;
+        }
 
-    .sidebar .close-btn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
+        .tudo {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #222;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .content {
-        transition: margin-left .5s;
-        padding: 16px;
-    }
-    
-    .calculator {
-        width: 300px;
-        margin: 100px auto;
-        background-color: #222;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
+        .calculator {
+            text-align: center;
+            padding: 20px;
+        }
 
-    #display {
-        width: calc(100% - 40px); 
-        padding: 20px; 
-        margin-bottom: 10px;
-        background-color: #333;
-        color: #ccc;
-        border: none;
-        border-radius: 5px;
-        font-size: 24px; 
-    }
+        .title, .subtitle {
+            font-size: 36px;
+        }
 
-    .keys {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 10px;
-    }
+        .menu, .converter-menu {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-    button {
-        padding: 15px;
-        font-size: 18px;
-        background-color: #444;
-        color: #ccc;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+        .menu button, .converter-menu button {
+            display: block;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 200px;
+            margin: 5px 0;
+            cursor: pointer;
+            font-size: 18px;
+        }
 
-    button:hover {
-        background-color: #555;
-    }
+        .menu button:hover, .converter-menu button:hover {
+            background-color: #555;
+        }
 
-    button.operator {
-        color: #ff8800;
-    }
+        .calculator-container {
+            margin-top: 20px;
+        }
 
-    button.clear {
-        background-color: #ff4444;
-    }
-
-    button.equal {
-        background-color: #ff8800;
-    }
-</style>
+    </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="#calculadoras">Calculadoras</a>
+        <a href="#conversores">Conversores</a>
+    </div>
 
-<div class="sidebar" id="sidebar">
-    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
-    <a href="calculator.html">Calculadora Científica</a>
-</div>
-
-<div class="content" id="content">
-    <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
-
-    <div class="calculator">
-        <input type="text" id="display" readonly>
-        <div class="keys">
-            <button class="clear" onclick="clearDisplay()">C</button>
-            <button class="number" onclick="addToDisplay('.')">.</button>
-            <button class="operator" onclick="calculatePercentage()">%</button>
-            <button class="operator" onclick="addToDisplay('+')">+</button>
-            <button class="number" onclick="addToDisplay('7')">7</button>
-            <button class="number" onclick="addToDisplay('8')">8</button>
-            <button class="number" onclick="addToDisplay('9')">9</button>
-            <button class="operator" onclick="addToDisplay('-')">-</button>
-            <button class="number" onclick="addToDisplay('4')">4</button>
-            <button class="number" onclick="addToDisplay('5')">5</button>
-            <button class="number" onclick="addToDisplay('6')">6</button>
-            <button class="operator" onclick="addToDisplay('*')">×</button>
-            <button class="number" onclick="addToDisplay('1')">1</button>
-            <button class="number" onclick="addToDisplay('2')">2</button>
-            <button class="number" onclick="addToDisplay('3')">3</button>
-            <button class="operator" onclick="addToDisplay('/')">÷</button>
-            <button class="operator" onclick="addToDisplay('(')">(</button>
-            <button class="number" onclick="addToDisplay('0')">0</button>
-            <button class="operator" onclick="addToDisplay(')')">)</button>
-            <button class="equal" onclick="calculate()">=</button>
+    <div class="tudo">
+        <div id="calculadoras" class="section">
+            <div class="calculator">
+                <h1 class="title">Calculadoras</h1>
+                <div class="menu">
+                    <button onclick="redirectTo('básica.html')">Calculadora Básica</button>
+                    <button onclick="redirectTo('científica.html')">Calculadora Científica</button>
+                    <button onclick="redirectTo('gráfica.html')">Calculadora Gráfica</button>
+                    <button onclick="redirectTo('financeira.html')">Calculadora Financeira</button>
+                </div>
+            </div>
+        </div>
+    
+        <div id="conversores" class="section">
+            <div class="calculator">
+                <h1 class="title">Conversores</h1>
+                <div class="menu">
+                    <button onclick="redirectTo('peso.html')">Conversor de Peso</button>
+                    <button onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
+                    <button onclick="redirectTo('velocidade.html')">Conversor de Velocidade</button>
+                    <button onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
+                    <button onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    function openSidebar() {
-        document.getElementById("sidebar").style.width = "250px";
-        document.getElementById("content").style.marginLeft = "250px";
-    }
-
-    function closeSidebar() {
-        document.getElementById("sidebar").style.width = "0";
-        document.getElementById("content").style.marginLeft = "0";
-    }
-
-    function adjustFontSize() {
-        var display = document.getElementById('display');
-        var length = display.value.length;
-        var fontSize = 24; 
-        if (length > 19) { 
-            fontSize -= (length - 19) * 0.5; 
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
         }
-        display.style.fontSize = fontSize + 'px'; 
-    }
-
-    function addToDisplay(value) {
-        var display = document.getElementById('display');
-        var currentValue = display.value;
-
-        if (value === '(') {
-            if (!currentValue || currentValue.slice(-1).match(/[/*\-+\(]/)) {
-                display.value += value;
-            } else if (currentValue.slice(-1).match(/\d|\)/)) {
-                display.value += '*(';
-            }
-        } else if (value === ')') {
-            var openParenCount = (currentValue.match(/\(/g) || []).length;
-            var closeParenCount = (currentValue.match(/\)/g) || []).length;
-            if (openParenCount > closeParenCount) {
-                display.value += value;
-            } else if (openParenCount > closeParenCount || currentValue.slice(-1).match(/\d|\)/)) {
-                display.value += "*(1)";
-            } else {
-                display.value += "(0)";
-            }
-        } else if (currentValue.slice(-1) === ')' && !isNaN(value)) {
-            value = '*' + value;
-            display.value += value;
-        } else {
-            display.value += value;
-        }
-
-        adjustFontSize(); 
-    }
-
-    function clearDisplay() {
-        document.getElementById('display').value = '';
-        adjustFontSize(); 
-    }
-
-    function calculate() {
-        var expression = document.getElementById('display').value;
-        try {
-            var result = eval(expression);
-            document.getElementById('display').value = parseFloat(result.toFixed(10));
-        } catch (error) {
-            document.getElementById('display').value = 'Error';
-        }
-        adjustFontSize();
-    }
-
-    function calculatePercentage() {
-        var display = document.getElementById('display');
-        var currentValue = display.value;
-        try {
-            var result = eval(currentValue) / 100;
-            document.getElementById('display').value = parseFloat(result.toFixed(10));
-        } catch (error) {
-            document.getElementById('display').value = 'Error';
-        }
-        adjustFontSize();
-    }
-</script>
-
+    </script>
 </body>
 </html>
