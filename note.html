@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #eee;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            color: #eee;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .toggle-dark-mode:hover {
+            color: #fff;
+        }
+
+        .tudo {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #222;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .calculator, .conversor {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+
+        .title, .subtitle {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+
+        .menu, .converter-menu {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu button, .converter-menu button {
+            display: block;
+            width: 100%;
+            background-color: #555;
+            color: #eee;
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu button:hover, .converter-menu button:hover {
+            background-color: #777;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#calculadoras">Calculadoras</a>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">Modo Noturno</button>
+    </div>
+
+    <div class="tudo">
+        <div id="calculadoras" class="section">
+            <div class="calculator">
+                <h1 class="title">Calculadoras</h1>
+                <div class="menu">
+                    <button onclick="redirectTo('básica.html')">Calculadora Básica</button>
+                    <button onclick="redirectTo('científica.html')">Calculadora Científica</button>
+                    <button onclick="redirectTo('gráfica.html')">Calculadora Gráfica</button>
+                    <button onclick="redirectTo('financeira.html')">Calculadora Financeira</button>
+                </div>
+            </div>
+        </div>
+    
+        <div id="conversores" class="section">
+            <div class="conversor">
+                <h1 class="subtitle">Conversores</h1>
+                <div class="menu">
+                    <button onclick="redirectTo('peso.html')">Conversor de Peso</button>
+                    <button onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
+                    <button onclick="redirectTo('velocidade.html')">Conversor de Velocidade</button>
+                    <button onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
+                    <button onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            const tudo = document.querySelector('.tudo');
+            const calculator = document.querySelector('.calculator');
+            const conversor = document.querySelector('.conversor');
+            const titulo = document.querySelector('.title');
+            const subtitulo = document.querySelector('.subtitle');
+            const toggleButton = document.querySelector('.toggle-dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                tudo.style.backgroundColor = '#222';
+                calculator.style.backgroundColor = '#333';
+                conversor.style.backgroundColor = '#333';
+                titulo.style.color = 'white';
+                subtitulo.style.color = 'white';
+                tudo.style.color = '#eee';
+                toggleButton.textContent = 'Modo Diurno';
+            } else {
+                body.classList.add('dark-mode');
+                tudo.style.backgroundColor = '#f4f4f4';
+                calculator.style.backgroundColor = 'white';
+                conversor.style.backgroundColor = 'white';
+                titulo.style.color = 'black';
+                subtitulo.style.color = 'black';
+                tudo.style.color = '#ddd';
+                toggleButton.textContent = 'Modo Noturno';
+            }
+        }
+    </script>
+</body>
+</html>
