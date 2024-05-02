@@ -15,23 +15,40 @@
 
         .navbar {
             overflow: hidden;
-            background-color: #222;
+            background-color: #111;
             position: fixed;
             top: 0;
             width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
         }
 
         .navbar a {
-            float: left;
-            display: block;
             color: white;
-            text-align: center;
-            padding: 14px 20px;
             text-decoration: none;
+            transition: background-color 0.3s;
         }
 
         .navbar a:hover {
             background-color: #555;
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            color: #eee;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .toggle-dark-mode:hover {
+            color: #fff;
         }
 
         .tudo {
@@ -45,9 +62,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .calculator {
+        .calculator, .conversor {
             text-align: center;
             padding: 20px;
         }
@@ -96,30 +114,31 @@
     <div class="navbar">
         <a href="#calculadoras">Calculadoras</a>
         <a href="#conversores">Conversores</a>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">Modo Noturno</button>
     </div>
-
+        
     <div class="tudo">
         <div id="calculadoras" class="section">
             <div class="calculator">
                 <h1 class="title">Calculadoras</h1>
                 <div class="menu">
-                    <button onclick="redirectTo('básica.html')">Calculadora Básica</button>
-                    <button onclick="redirectTo('científica.html')">Calculadora Científica</button>
-                    <button onclick="redirectTo('note.html')">Calculadora Gráfica</button>
+                    <button class = "básica" onclick="redirectTo('básica.html')">Calculadora Básica</button>
+                    <button class = "científica" onclick="redirectTo('científica.html')">Calculadora Científica</button>
+                    <button onclick="redirectTo('gráfica.html')">Calculadora Gráfica</button>
                     <button onclick="redirectTo('financeira.html')">Calculadora Financeira</button>
                 </div>
             </div>
         </div>
     
         <div id="conversores" class="section">
-            <div class="calculator">
-                <h1 class="title">Conversores</h1>
+            <div class="conversor">
+                <h1 class="subtitle">Conversores</h1>
                 <div class="menu">
-                    <button onclick="redirectTo('peso.html')">Conversor de Peso</button>
-                    <button onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
-                    <button onclick="redirectTo('velocidade.html')">Conversor de Velocidade</button>
-                    <button onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
-                    <button onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
+                    <button class = "peso" onclick="redirectTo('peso.html')">Conversor de Peso</button>
+                    <button id = "button" onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
+                    <button id = "button" onclick="redirectTo('velocidade.html')">Conversor de Velocidade</button>
+                    <button id = "button" onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
+                    <button id = "button" onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
                 </div>
             </div>
         </div>
@@ -128,6 +147,41 @@
     <script>
         function redirectTo(page) {
             window.location.href = page;
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            const tudo = document.querySelector('.tudo');
+            const calculator = document.querySelector('.calculator');
+            const conversor = document.querySelector('.conversor');
+            const titulo = document.querySelector('.title');
+            const subtitulo = document.querySelector('.subtitle');
+            const básica = document.querySelector('.básica');
+            const científica = document.querySelector('.científica');
+            const peso = document.querySelector('.peso');
+            const toggleButton = document.querySelector('.toggle-dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                tudo.style.backgroundColor = '#222';
+                titulo.style.color = 'white';
+                subtitulo.style.color = 'white';
+                básica.style.backgroundColor = '#333';
+                científica.style.backgroundColor = '#333';
+                peso.style.backgroundColor = '#333';
+                tudo.style.color = '#eee';
+                toggleButton.textContent = 'Modo Diurno';
+            } else {
+                body.classList.add('dark-mode');
+                tudo.style.backgroundColor = 'white';
+                titulo.style.color = 'black';
+                subtitulo.style.color = 'black';
+                básica.style.backgroundColor = '#007bff';
+                científica.style.backgroundColor = '#007bff';
+                básica.style.backgroundColor = '#007bff';
+                peso.style.backgroundColor = '#007bff';
+                tudo.style.color = '#ddd';
+                toggleButton.textContent = 'Modo Noturno';
+            }
         }
     </script>
 </body>
