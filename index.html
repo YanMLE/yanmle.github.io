@@ -124,8 +124,8 @@
                 <div class="menu">
                     <button class = "básica" onclick="redirectTo('básica.html')">Calculadora Básica</button>
                     <button class = "científica" onclick="redirectTo('científica.html')">Calculadora Científica</button>
-                    <button onclick="redirectTo('gráfica.html')">Calculadora Gráfica</button>
-                    <button onclick="redirectTo('financeira.html')">Calculadora Financeira</button>
+                    <button class = "gráfica" onclick="redirectTo('gráfica.html')">Calculadora Gráfica</button>
+                    <button class = "financeira" onclick="redirectTo('financeira.html')">Calculadora Financeira</button>
                 </div>
             </div>
         </div>
@@ -135,10 +135,10 @@
                 <h1 class="subtitle">Conversores</h1>
                 <div class="menu">
                     <button class = "peso" onclick="redirectTo('peso.html')">Conversor de Peso</button>
-                    <button id = "button" onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
-                    <button id = "button" onclick="redirectTo('velocidade.html')">Conversor de Velocidade</button>
-                    <button id = "button" onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
-                    <button id = "button" onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
+                    <button class = "moedas" id = "button" onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
+                    <button class = "velocidade" id = "button" onclick="redirectTo('velocidade.html')">Conversor de Velocidade</button>
+                    <button class = "temperatura" id = "button" onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
+                    <button class = "comprimento" id = "button" onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
                 </div>
             </div>
         </div>
@@ -158,6 +158,12 @@
             const subtitulo = document.querySelector('.subtitle');
             const básica = document.querySelector('.básica');
             const científica = document.querySelector('.científica');
+            const gráfica = document.querySelector('.gráfica');
+            const financeira = document.querySelector('.financeira');
+            const moedas = document.querySelector('.moedas');
+            const velocidade = document.querySelector('.velocidade');
+            const temperatura = document.querySelector('.temperatura');
+            const comprimento = document.querySelector('.comprimento');
             const peso = document.querySelector('.peso');
             const toggleButton = document.querySelector('.toggle-dark-mode');
             if (body.classList.contains('dark-mode')) {
@@ -167,7 +173,13 @@
                 subtitulo.style.color = 'white';
                 básica.style.backgroundColor = '#333';
                 científica.style.backgroundColor = '#333';
+                financeira.style.backgroundColor = '#333';
+                gráfica.style.backgroundColor = '#333';
                 peso.style.backgroundColor = '#333';
+                moedas.style.backgroundColor = '#333';
+                velocidade.style.backgroundColor = '#333';
+                temperatura.style.backgroundColor = '#333';
+                comprimento.style.backgroundColor = '#333';
                 tudo.style.color = '#eee';
                 toggleButton.textContent = 'Modo Diurno';
             } else {
@@ -177,8 +189,13 @@
                 subtitulo.style.color = 'black';
                 básica.style.backgroundColor = '#007bff';
                 científica.style.backgroundColor = '#007bff';
-                básica.style.backgroundColor = '#007bff';
+                financeira.style.backgroundColor = '#007bff';
+                gráfica.style.backgroundColor = '#007bff';
                 peso.style.backgroundColor = '#007bff';
+                moedas.style.backgroundColor = '#007bff';
+                velocidade.style.backgroundColor = '#007bff';
+                temperatura.style.backgroundColor = '#007bff';
+                comprimento.style.backgroundColor = '#007bff';
                 tudo.style.color = '#ddd';
                 toggleButton.textContent = 'Modo Noturno';
             }
