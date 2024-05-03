@@ -14,17 +14,18 @@
         }
 
         .navbar {
-            overflow: hidden;
-            background-color: #111;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
+        position: fixed;
+        overflow: hidden;
+        background-color: #111;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 10px 0px;
+        height: 30px;
         }
 
         .navbar a {
@@ -45,7 +46,10 @@
             cursor: pointer;
             font-size: 16px;
             transition: color 0.3s;
+            margin-right: 20px;
+            width: 40px;
         }
+
 
         .toggle-dark-mode:hover {
             color: #fff;
@@ -114,7 +118,7 @@
     <div class="navbar">
         <a href="#calculadoras">Calculadoras</a>
         <a href="#conversores">Conversores</a>
-        <button class="toggle-dark-mode" onclick="toggleDarkMode()">Modo Noturno</button>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">☼</button>
     </div>
         
     <div class="tudo">
@@ -181,7 +185,7 @@
                 temperatura.style.backgroundColor = '#333';
                 comprimento.style.backgroundColor = '#333';
                 tudo.style.color = '#eee';
-                toggleButton.textContent = 'Modo Diurno';
+                toggleButton.textContent = '☼';
             } else {
                 body.classList.add('dark-mode');
                 tudo.style.backgroundColor = 'white';
@@ -197,7 +201,7 @@
                 temperatura.style.backgroundColor = '#007bff';
                 comprimento.style.backgroundColor = '#007bff';
                 tudo.style.color = '#ddd';
-                toggleButton.textContent = 'Modo Noturno';
+                toggleButton.textContent = '☾';
             }
         }
     </script>
