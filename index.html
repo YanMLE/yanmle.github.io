@@ -115,8 +115,8 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="#calculadoras">Calculadoras</a>
-        <a href="#conversores">Conversores</a>
+        <!-- <a href="#calculadoras">Calculadoras</a> -->
+        <!-- <a href="#conversores">Conversores</a> -->
         <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
     </div>
         
@@ -155,13 +155,13 @@
             const subtitulo = document.querySelector('.subtitle');
             const básica = document.querySelector('.básica');
             const científica = document.querySelector('.científica');
+            const peso = document.querySelector('.peso');
             const gráfica = document.querySelector('.gráfica');
             const financeira = document.querySelector('.financeira');
             const moedas = document.querySelector('.moedas');
             const velocidade = document.querySelector('.velocidade');
             const temperatura = document.querySelector('.temperatura');
             const comprimento = document.querySelector('.comprimento');
-            const peso = document.querySelector('.peso');
             const toggleButton = document.querySelector('.toggle-dark-mode');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
@@ -170,13 +170,7 @@
                 subtitulo.style.color = 'white';
                 básica.style.backgroundColor = '#333';
                 científica.style.backgroundColor = '#333';
-                financeira.style.backgroundColor = '#333';
-                gráfica.style.backgroundColor = '#333';
                 peso.style.backgroundColor = '#333';
-                moedas.style.backgroundColor = '#333';
-                velocidade.style.backgroundColor = '#333';
-                temperatura.style.backgroundColor = '#333';
-                comprimento.style.backgroundColor = '#333';
                 tudo.style.color = '#eee';
                 toggleButton.textContent = '☀';
             } else {
@@ -186,13 +180,7 @@
                 subtitulo.style.color = 'black';
                 básica.style.backgroundColor = '#007bff';
                 científica.style.backgroundColor = '#007bff';
-                financeira.style.backgroundColor = '#007bff';
-                gráfica.style.backgroundColor = '#007bff';
                 peso.style.backgroundColor = '#007bff';
-                moedas.style.backgroundColor = '#007bff';
-                velocidade.style.backgroundColor = '#007bff';
-                temperatura.style.backgroundColor = '#007bff';
-                comprimento.style.backgroundColor = '#007bff';
                 tudo.style.color = '#ddd';
                 toggleButton.textContent = '☾';
             }
