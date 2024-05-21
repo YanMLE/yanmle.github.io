@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-1981226824008179">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981226824008179"
-     crossorigin="anonymous"></script>
     <title>Calculadora</title>
     <style>
         body {
-            background-color: black;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #222;
             color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0; 
         }
-
+        a {
+            color: white;
+        }
         .navbar {
-        position: fixed;
-        overflow: hidden;
-        background-color: #111;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 10px 0px;
-        height: 30px;
+            position: fixed;
+            overflow: hidden;
+            background-color: #111;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px 0px;
+            height: 30px;
+            margin: 0;
         }
 
         .navbar a {
@@ -39,6 +47,12 @@
 
         .navbar a:hover {
             background-color: #555;
+        }
+
+        .toggle {
+            color: #fff;
+            background-color: #222;
+            border-style: dashed;
         }
 
         .toggle-dark-mode {
@@ -57,18 +71,22 @@
             color: #fff;
         }
 
-        .tudo {
-            width: 100%;
-            min-height: 100vh;
-            background-color: #222;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.3s, color 0.3s;
+        .welcome-text {
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 80px;
+}
+
+
+        .welcome-text h2 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .welcome-text p {
+            margin: 40px 0 0;
+            font-size: 18px;
         }
 
         .calculator, .conversor {
@@ -112,24 +130,32 @@
                 padding: 10px 15px; 
                 font-size: 14px;
             }
+
+            .menu button, .converter-menu button {
+                padding: 10px;
+                font-size: 14px;
+            }
         }
 
     </style>
 </head>
 <body>
     <div class="navbar">
-        <!-- <a href="#calculadoras">Calculadoras</a> -->
-        <!-- <a href="#conversores">Conversores</a> -->
         <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
     </div>
-        
-    <div class="tudo">
+
+        <div id="welcome-text" class="welcome-text">
+            <h2 class="bemvindo">Bem-vindo(a)!</h2>
+            <p class="p1">Aqui você encontrará uma variedade de <a class ="descer" href="#calculadoras">calculadoras</a> e <a class="descerr" href="#conversores">conversores</a> para atender às suas necessidades diárias. Nossas ferramentas são projetadas para serem fáceis de usar e acessíveis a todos.</p>
+            <p class="p2">Explore as seções abaixo para acessar as calculadoras e conversores disponíveis. Temos desde calculadoras básicas para operações simples até calculadoras científicas para cálculos mais complexos. Na seção de conversores, você encontrará ferramentas para converter unidades de peso, comprimento, temperatura e muito mais.</p>
+            <p class="p3">Além disso, você pode alternar entre o modo diurno e noturno clicando no botão <button class="toggle" >☀</button> centralizado no topo da página. O modo diurno oferece uma aparência mais clara e vibrante, enquanto o modo noturno proporciona uma experiência de visualização mais suave e confortável para os olhos em ambientes com pouca luz.</p>
+        </div>
         <div id="calculadoras" class="section">
             <div class="calculator">
                 <h1 class="title">Calculadoras</h1>
                 <div class="menu">
-                    <button class = "básica" onclick="redirectTo('básica.html')">Calculadora Básica</button>
-                    <button class = "científica" onclick="redirectTo('científica.html')">Calculadora Científica</button>
+                    <button class="básica" onclick="redirectTo('básica.html')">Calculadora Básica</button>
+                    <button class="científica" onclick="redirectTo('científica.html')">Calculadora Científica</button>
                 </div>
             </div>
         </div>
@@ -138,11 +164,10 @@
             <div class="conversor">
                 <h1 class="subtitle">Conversores</h1>
                 <div class="menu">
-                    <button class = "peso" onclick="redirectTo('peso.html')">Conversor de Peso</button>
+                    <button class="peso" onclick="redirectTo('peso.html')">Conversor de Peso</button>
                 </div>
             </div>
         </div>
-    </div>
 
     <script>
         function redirectTo(page) {
@@ -152,40 +177,57 @@
         function toggleDarkMode() {
             const body = document.body;
             const tudo = document.querySelector('.tudo');
-            const calculator = document.querySelector('.calculator');
-            const conversor = document.querySelector('.conversor');
             const titulo = document.querySelector('.title');
+            const bemvindo = document.querySelector('.bemvindo');
+            const descer = document.querySelector('.descer');
+            const descerr = document.querySelector('.descerr');
+            const pa = document.querySelector('.p1');
+            const pb = document.querySelector('.p2');
+            const pc = document.querySelector('.p3');
             const subtitulo = document.querySelector('.subtitle');
             const básica = document.querySelector('.básica');
             const científica = document.querySelector('.científica');
             const peso = document.querySelector('.peso');
-            const gráfica = document.querySelector('.gráfica');
-            const financeira = document.querySelector('.financeira');
-            const moedas = document.querySelector('.moedas');
-            const velocidade = document.querySelector('.velocidade');
-            const temperatura = document.querySelector('.temperatura');
-            const comprimento = document.querySelector('.comprimento');
             const toggleButton = document.querySelector('.toggle-dark-mode');
+            const toggle = document.querySelector('.toggle');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
-                tudo.style.backgroundColor = '#222';
+                body.style.backgroundColor = '#222';
+                toggle.style.backgroundColor = '#222';
                 titulo.style.color = 'white';
                 subtitulo.style.color = 'white';
+                bemvindo.style.color = 'white';
+                descer.style.color = 'white';
+                descerr.style.color = 'white';
+                pa.style.color = 'white';
+                pb.style.color = 'white';
+                pc.style.color = 'white';
+                toggle.style.color = 'white';
                 básica.style.backgroundColor = '#333';
                 científica.style.backgroundColor = '#333';
                 peso.style.backgroundColor = '#333';
-                tudo.style.color = '#eee';
+                body.style.color = '#eee';
                 toggleButton.textContent = '☀';
+                toggle.textContent = '☀';
             } else {
                 body.classList.add('dark-mode');
-                tudo.style.backgroundColor = 'white';
+                body.style.backgroundColor = 'white';
+                toggle.style.backgroundColor = 'white';
                 titulo.style.color = 'black';
                 subtitulo.style.color = 'black';
+                bemvindo.style.color = 'black';
+                descer.style.color = 'black';
+                descerr.style.color = 'black';
+                pa.style.color = 'black';
+                pb.style.color = 'black';
+                pc.style.color = 'black';
+                toggle.style.color = 'black';
                 básica.style.backgroundColor = '#007bff';
                 científica.style.backgroundColor = '#007bff';
                 peso.style.backgroundColor = '#007bff';
-                tudo.style.color = '#ddd';
+                body.style.color = '#ddd';
                 toggleButton.textContent = '☾';
+                toggle.textContent = '☾'
             }
         }
     </script>
