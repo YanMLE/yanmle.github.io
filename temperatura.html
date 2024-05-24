@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-1981226824008179">
+<title>Conversor de Temperatura</title>
+<style>
+    body {
+        background-color: #000;
+        color: #ccc;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+    .container {
+        width: 300px;
+        margin: 100px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: white;
+    }
+    
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        background-color: #444;
+        color: white;
+    }
+    
+    input:focus {
+        outline: none;
+        border-color: #555;
+    }
+
+    select {
+        background-color: #444;
+        border: 1px solid #444;
+        color: white;
+    }
+
+    .azul {
+        color: white;
+    }
+
+    .Kelvin {
+        color: #32CD32; /* Azul claro para Kelvin */
+    }
+
+    .Fahrenheit {
+        color: #9370DB; /* Vermelho escuro para Fahrenheit */
+    }
+
+    .Celsius {
+        color: #4682B4; /* Verde para Celsius */
+    }
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+    <a href="index.html">Menu</a>
+    <a href="básica.html">Calculadora Simples</a>
+    <a href="científica.html">Calculadora Científica</a>
+    <a href="peso.html">Conversor de Peso</a>
+</div>
+
+<div class="content" id="content">
+    <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+    <div class="container">
+        <h1>Conversor de Temperatura</h1>
+        <div class="input-container">
+            <label for="CInput">Celsius:</label>
+            <input type="number" id="CInput" oninput="converterC()">
+        </div>
+        <div class="input-container">
+            <label for="FInput">Fahrenheit:</label>
+            <input type="number" id="FInput" oninput="converterF()">
+        </div>
+        <div class="input-container">
+            <label for="KInput">Kelvin:</label>
+            <input type="number" id="KInput" oninput="converterK()">
+        </div>
+        <button id="toggleButton" onclick="toggleUnidades()">Mostrar Todas as Fórmulas</button>
+        <div class="azul" id="result"></div>
+    </div>
+</div>
+
+<script>
+    let showingUnits = false;
+
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+    function converterC() {
+        var Ce = document.getElementById("CInput").value;
+        var Fa = (Ce * 9/5) + 32;
+        var Ke = 5/9 * (Fa - 32) + 273.15;
+        document.getElementById("FInput").value = Fa.toFixed(3);
+        document.getElementById("KInput").value = Ke.toFixed(3);
+    }
+
+    function converterF() {
+        var Fa = document.getElementById("FInput").value;
+        var Ce = (Fa - 32) * 5/9;
+        var Ke = 5/9 * (Fa - 32) + 273.15;
+        document.getElementById("CInput").value = Ce.toFixed(3);
+        document.getElementById("KInput").value = Ke.toFixed(3);
+    }
+
+    function converterK() {
+        var Ke = document.getElementById("KInput").value;
+        var Ce = Ke - 273.15;
+        var Fa = 9/5 * (Ke - 273.15) + 32;
+        document.getElementById("CInput").value = Ce.toFixed(3);
+        document.getElementById("FInput").value = Fa.toFixed(3);
+    }
+
+    function toggleUnidades() {
+    if (showingUnits) {
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("toggleButton").innerText = "Mostrar Todas as Fórmulas";
+    } else {
+        var formulas = "<p style='font-size: 20px;'><a class='Celsius'>Celsius</a> para <a class='Kelvin'>Kelvin</a>: <p>\( K = C + 273.15 \)</p></p>" +
+                       "<p style='font-size: 20px;'><a class='Celsius'>Celsius</a> para <a class='Fahrenheit'>Fahrenheit</a>: <p>\( F = (C * 9/5) + 32 \)</p></p>" +
+                       "<p style='font-size: 20px;'><a class='Fahrenheit'>Fahrenheit</a> para <a class='Celsius'>Celsius</a>: <p>\( C = (F - 32) * 5/9 \)</p></p>" +
+                       "<p style='font-size: 20px;'><a class='Fahrenheit'>Fahrenheit</a> para <a class='Kelvin'>Kelvin</a>: <p>\( K = 5/9 * (F - 32) + 273.15 \)</p></p>" +
+                       "<p style='font-size: 20px;'><a class='Kelvin'>Kelvin</a> para <a class='Fahrenheit'>Fahrenheit</a>: <p>\( F = 9/5 * (K - 273.15) + 32 \)</p></p>" +
+                       "<p style='font-size: 20px;'><a class='Kelvin'>Kelvin</a> para <a class='Celsius'>Celsius</a>: <p>\( C = K - 273.15 \)</p></p>";
+
+        document.getElementById("result").innerHTML = formulas;
+        document.getElementById("toggleButton").innerText = "Ocultar Fórmulas";
+    }
+    showingUnits = !showingUnits;
+}
+
+</script>
+</body>
+</html>
