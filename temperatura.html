@@ -88,27 +88,23 @@
         border-color: #555;
     }
 
-    select {
-        background-color: #444;
-        border: 1px solid #444;
-        color: white;
-    }
-
-    .azul {
-        color: white;
-    }
-
     .Kelvin {
-        color: #32CD32; /* Azul claro para Kelvin */
+        color: #32CD32;
     }
 
     .Fahrenheit {
-        color: #9370DB; /* Vermelho escuro para Fahrenheit */
+        color: #9370DB;
     }
 
     .Celsius {
-        color: #4682B4; /* Verde para Celsius */
+        color: #4682B4;
     }
+
+    footer {
+        text-align: center;
+        color: white;
+    }
+
 </style>
 </head>
 <body>
@@ -138,9 +134,38 @@
             <label for="KInput">Kelvin:</label>
             <input type="number" id="KInput" oninput="converterK()">
         </div>
-        <button id="toggleButton" onclick="toggleUnidades()">Mostrar Todas as Fórmulas</button>
-        <div class="azul" id="result"></div>
+
+        <footer>
+            <p>&copy; 2024 Calculadora Braba</p>
+        </footer>
     </div>
+
+    <header>
+        <h1>Entendendo a Conversão de Temperaturas</h1>
+    </header>
+    <main>
+        <section>
+            <h2>A Fórmula</h2>
+            <p>A fórmula de conversão entre Celsius (C), Fahrenheit (F) e Kelvin (K) pode ser expressa da seguinte maneira:</p>
+            <p><strong>C = (F - 32) * 5/9 = K - 273.15</strong></p>
+        </section>
+        <section>
+            <h2>Explicação</h2>
+            <p>Para converter temperaturas entre essas unidades, precisamos entender como cada uma delas está relacionada:</p>
+            <ul>
+                <li><strong>Kelvin (K):</strong> A escala Kelvin é uma escala absoluta de temperatura, usada principalmente em contextos científicos. O zero absoluto (0 K) é a temperatura mais baixa possível.</li>
+                <li><strong>Celsius (C):</strong> A escala Celsius é baseada no ponto de congelamento (0°C) e no ponto de ebulição (100°C) da água sob pressão atmosférica normal.</li>
+                <li><strong>Fahrenheit (F):</strong> A escala Fahrenheit é usada principalmente nos Estados Unidos. Nesta escala, a água congela a 32°F e ferve a 212°F.</li>
+            </ul>
+            <p>A fórmula pode ser decomposta da seguinte maneira:</p>
+            <ul>
+                <li>Para converter Kelvin para Celsius: <strong>C = K - 273.15</strong></li>
+                <li>Para converter Fahrenheit para Celsius: <strong>C = (F - 32) * 5/9</strong></li>
+            </ul>
+            <p>Como essas fórmulas resultam em Celsius, podemos igualá-las para expressar a relação entre todas as três unidades:</p>
+            <p><strong>K - 273.15 = (F - 32) * 5/9 = C</strong></p>
+        </section>
+    </main>
 </div>
 
 <script>
@@ -179,24 +204,6 @@
         document.getElementById("CInput").value = Ce.toFixed(3);
         document.getElementById("FInput").value = Fa.toFixed(3);
     }
-
-    function toggleUnidades() {
-    if (showingUnits) {
-        document.getElementById("result").innerHTML = "";
-        document.getElementById("toggleButton").innerText = "Mostrar Todas as Fórmulas";
-    } else {
-        var formulas = "<p style='font-size: 20px;'><a class='Celsius'>Celsius</a> para <a class='Kelvin'>Kelvin</a>: <p>\( K = C + 273.15 \)</p></p>" +
-                       "<p style='font-size: 20px;'><a class='Celsius'>Celsius</a> para <a class='Fahrenheit'>Fahrenheit</a>: <p>\( F = (C * 9/5) + 32 \)</p></p>" +
-                       "<p style='font-size: 20px;'><a class='Fahrenheit'>Fahrenheit</a> para <a class='Celsius'>Celsius</a>: <p>\( C = (F - 32) * 5/9 \)</p></p>" +
-                       "<p style='font-size: 20px;'><a class='Fahrenheit'>Fahrenheit</a> para <a class='Kelvin'>Kelvin</a>: <p>\( K = 5/9 * (F - 32) + 273.15 \)</p></p>" +
-                       "<p style='font-size: 20px;'><a class='Kelvin'>Kelvin</a> para <a class='Fahrenheit'>Fahrenheit</a>: <p>\( F = 9/5 * (K - 273.15) + 32 \)</p></p>" +
-                       "<p style='font-size: 20px;'><a class='Kelvin'>Kelvin</a> para <a class='Celsius'>Celsius</a>: <p>\( C = K - 273.15 \)</p></p>";
-
-        document.getElementById("result").innerHTML = formulas;
-        document.getElementById("toggleButton").innerText = "Ocultar Fórmulas";
-    }
-    showingUnits = !showingUnits;
-}
 
 </script>
 </body>
