@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-1981226824008179">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981226824008179"
-     crossorigin="anonymous"></script>
-<title>Calculadora Braba</title>
+<title>Calculadora Científica</title>
 <style>
     body {
   background-color: #000;
@@ -51,6 +49,11 @@
     .content {
         transition: margin-left .5s;
         padding: 16px;
+    }
+
+    footer {
+        text-align: center;
+        color: white;
     }
 
 .calculator {
@@ -114,7 +117,7 @@ button.equal {
         <a href="index.html">Menu</a>
         <a href="básica.html">Calculadora Básica</a>
         <a href="peso.html">Conversor de Peso</a>
-        <a href="temperatura.html">Conversor de Temperatura</a> 
+        <a href="temperatura.html">Conversor de Temperatura</a>
     </div>
     
     <div class="content" id="content">
@@ -247,7 +250,7 @@ button.equal {
     var display = document.getElementById('display');
     var currentValue = display.value;
     try {
-        var radians = parseFloat(currentValue) * (Math.PI / 180); // Convertendo graus para radianos
+        var radians = parseFloat(currentValue) * (Math.PI / 180);
         var result = Math.sin(radians);
         document.getElementById('display').value = parseFloat(result.toFixed(10));
     } catch (error) {
@@ -260,7 +263,7 @@ function calculateCosine() {
         var display = document.getElementById('display');
         var currentValue = display.value;
         try {
-            var radians = parseFloat(currentValue) * (Math.PI / 180); // Convertendo graus para radianos
+            var radians = parseFloat(currentValue) * (Math.PI / 180);
             var result = Math.cos(radians);
             document.getElementById('display').value = parseFloat(result.toFixed(10));
         } catch (error) {
@@ -273,7 +276,7 @@ function calculateCosine() {
         var display = document.getElementById('display');
         var currentValue = display.value;
         try {
-            var radians = parseFloat(currentValue) * (Math.PI / 180); // Convertendo graus para radianos
+            var radians = parseFloat(currentValue) * (Math.PI / 180);
             var result = Math.tan(radians);
             document.getElementById('display').value = parseFloat(result.toFixed(10));
         } catch (error) {
