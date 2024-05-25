@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981226824008179"
-     crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1981226824008179">
 <title>Conversor de Peso</title>
 <style>
     body {
@@ -14,6 +13,25 @@
         margin: 0;
         padding: 0;
     }
+
+    main {
+    line-height: 1.6;
+    margin: 20px
+}
+
+main h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+main p {
+    margin: 10px 0;
+}
+
+main ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
 
     .sidebar {
         height: 100%;
@@ -89,15 +107,15 @@
         border-color: #555;
     }
 
-    select {
-        background-color: #444;
-        border: 1px solid #444;
-        color: white;
-    }
-
     .azul {
         color: white;
     }
+
+    footer {
+        text-align: center;
+        color: white;
+    }
+
 </style>
 </head>
 <body>
@@ -126,6 +144,72 @@
         <div class="azul" id="result"></div>
     </div>
 </div>
+    <header>
+        <h1>Conversão de Unidades de Massa no Sistema Métrico</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Unidades de Massa</h2>
+            <p>No sistema métrico decimal, as unidades de massa são baseadas no grama (g). As principais unidades de massa são:</p>
+            <ul>
+                <li>Quilograma (kg)</li>
+                <li>Hectograma (hg)</li>
+                <li>Decagrama (dag)</li>
+                <li>Grama (g)</li>
+                <li>Decigrama (dg)</li>
+                <li>Centigrama (cg)</li>
+                <li>Miligrama (mg)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Fatores de Conversão</h2>
+            <p>Para converter entre essas unidades, usamos fatores de 10, pois o sistema métrico é um sistema decimal. Veja abaixo os fatores de conversão:</p>
+            <ul>
+                <li><strong>1 kg = 1000 g</strong></li>
+                <li><strong>1 hg = 100 g</strong></li>
+                <li><strong>1 dag = 10 g</strong></li>
+                <li><strong>1 g = 1 g</strong></li>
+                <li><strong>1 dg = 0,1 g</strong></li>
+                <li><strong>1 cg = 0,01 g</strong></li>
+                <li><strong>1 mg = 0,001 g</strong></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Conversão para Libras (lb)</h2>
+            <p>Para converter gramas (g) para libras (lb), usamos o fator de conversão:</p>
+            <p><strong>1 libra = 453,59237 gramas</strong></p>
+            <ul>
+                <li>Para converter de gramas para libras: <strong>lb = g ÷ 453,59237</strong></li>
+                <li>Para converter de libras para gramas: <strong>g = lb × 453,59237</strong></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Conversão para Toneladas (t)</h2>
+            <p>Para converter quilogramas (kg) para toneladas (t), usamos o fator de conversão:</p>
+            <p><strong>1 tonelada = 1000 quilogramas</strong></p>
+            <ul>
+                <li>Para converter de quilogramas para toneladas: <strong>t = kg ÷ 1000</strong></li>
+                <li>Para converter de toneladas para quilogramas: <strong>kg = t × 1000</strong></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Exemplos de Conversão</h2>
+            <p>Aqui estão alguns exemplos práticos de como converter unidades de massa:</p>
+            <ul>
+                <li><strong>2 kg para g:</strong> 2 kg × 1000 = 2000 g</li>
+                <li><strong>500 g para kg:</strong> 500 g ÷ 1000 = 0,5 kg</li>
+                <li><strong>3 dag para g:</strong> 3 dag × 10 = 30 g</li>
+                <li><strong>250 mg para g:</strong> 250 mg ÷ 1000 = 0,25 g</li>
+                <li><strong>1000 g para lb:</strong> 1000 g ÷ 453,59237 ≈ 2,20462 lb</li>
+                <li><strong>5 lb para g:</strong> 5 lb × 453,59237 = 2267,96 g</li>
+                <li><strong>3000 kg para t:</strong> 3000 kg ÷ 1000 = 3 t</li>
+                <li><strong>2 t para kg:</strong> 2 t × 1000 = 2000 kg</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Calculadora Braba</p>
+    </footer>
 
 <script>
     let showingUnits = false;
