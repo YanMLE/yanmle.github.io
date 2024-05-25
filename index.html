@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981226824008179"
-     crossorigin="anonymous"></script>
-    <title>Calculadora</title>
+    <meta name="google-adsense-account" content="ca-pub-1981226824008179">
+    <title>Calculadora Braba</title>
     <style>
         body {
             width: 100%;
@@ -106,6 +105,11 @@
             margin: 0 auto;
         }
 
+        footer {
+        text-align: center;
+        color: white;
+    }
+
         .menu button, .converter-menu button {
             display: block;
             width: 100%;
@@ -149,7 +153,7 @@
         <div id="welcome-text" class="welcome-text">
             <h2 class="bemvindo">Bem-vindo(a)!</h2>
             <p class="p1">Aqui você encontrará uma variedade de <a class ="descer" href="#calculadoras">calculadoras</a> e <a class="descerr" href="#conversores">conversores</a> para atender às suas necessidades diárias. Nossas ferramentas são projetadas para serem fáceis de usar e acessíveis a todos.</p>
-            <p class="p2">Explore as seções abaixo para acessar as calculadoras e conversores disponíveis. Temos desde calculadoras básicas para operações simples até calculadoras científicas para cálculos mais complexos. Na seção de conversores, você encontrará ferramentas para converter unidades de peso, comprimento, temperatura e muito mais.</p>
+            <p class="p2">Explore as seções abaixo para acessar as calculadoras e conversores disponíveis. Temos desde calculadoras básicas para operações simples até calculadoras científicas para cálculos mais complexos. Na seção de conversores, você encontrará ferramentas para converter unidades de peso e temperatura.</p>
             <p class="p3">Além disso, você pode alternar entre o modo diurno e noturno clicando no botão <button class="toggle" >☀</button> centralizado no topo da página. O modo diurno oferece uma aparência mais clara e vibrante, enquanto o modo noturno proporciona uma experiência de visualização mais suave e confortável para os olhos em ambientes com pouca luz.</p>
         </div>
         <div id="calculadoras" class="section">
@@ -172,6 +176,10 @@
             </div>
         </div>
 
+        <footer>
+            <p>&copy; 2024 Calculadora Braba</p>
+        </footer>
+
     <script>
         function redirectTo(page) {
             window.location.href = page;
@@ -180,6 +188,7 @@
         function toggleDarkMode() {
             const body = document.body;
             const tudo = document.querySelector('.tudo');
+            const footer = document.querySelector('footer');
             const titulo = document.querySelector('.title');
             const bemvindo = document.querySelector('.bemvindo');
             const descer = document.querySelector('.descer');
@@ -203,6 +212,7 @@
                 bemvindo.style.color = 'white';
                 descer.style.color = 'white';
                 descerr.style.color = 'white';
+                footer.style.color = 'white';
                 pa.style.color = 'white';
                 pb.style.color = 'white';
                 pc.style.color = 'white';
@@ -220,6 +230,7 @@
                 toggle.style.backgroundColor = 'white';
                 titulo.style.color = 'black';
                 subtitulo.style.color = 'black';
+                footer.style.color = 'black';
                 bemvindo.style.color = 'black';
                 descer.style.color = 'black';
                 descerr.style.color = 'black';
