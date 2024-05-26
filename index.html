@@ -16,169 +16,135 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            transition: background-color 0.3s, color 0.3s;
             margin: 0; 
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
         a {
-            color: white;
+            color: #1E90FF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         .navbar {
             position: fixed;
-            overflow: hidden;
-            background-color: #111;
             top: 0;
             width: 100%;
-            z-index: 9999;
+            background-color: #111;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
             align-items: center;
-            padding: 10px 0px;
-            height: 30px;
-            margin: 0;
+            padding: 10px 20px;
+            z-index: 9999;
         }
-
+        .navbar .brand {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0 40px;
+        }
         .navbar a {
             color: white;
-            text-decoration: none;
-            transition: background-color 0.3s;
+            margin: 0 10px;
         }
-
-        .navbar a:hover {
-            background-color: #555;
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 40px;
         }
-
+        .toggle-dark-mode:hover {
+            color: #1E90FF;
+        }
         .toggle {
             color: #fff;
             background-color: #222;
             border-style: dashed;
         }
-
-        .toggle-dark-mode {
-            background-color: transparent;
-            color: #eee;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 22px;
-            transition: color 0.3s;
-            margin-right: 20px;
-            width: 40px;
-        }
-
-        .toggle-dark-mode:hover {
-            color: #fff;
-        }
-
         .welcome-text {
             max-width: 800px;
             text-align: center;
-            margin-bottom: 40px;
-            padding-top: 80px;
-}
-
-
+            margin-top: 80px;
+        }
         .welcome-text h2 {
-            margin: 0;
-            font-size: 32px;
+            font-size: 2.5em;
+            margin-bottom: 20px;
         }
-
         .welcome-text p {
-            margin: 40px 0 0;
-            font-size: 18px;
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
-
-        .calculator, .conversor {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .title, .subtitle {
-            font-size: 36px;
-        }
-
-        .menu, .converter-menu {
+        .section, .section2 {
             width: 100%;
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s;
         }
-
-        footer {
-        text-align: center;
-        color: white;
-    }
-
-        .menu button, .converter-menu button {
+        .section h1, .section2 h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .menu button, .menu2 button {
             display: block;
             width: 100%;
-            background-color: #333;
+            background-color: #444;
             color: white;
             border: none;
             border-radius: 5px;
-            padding: 15px 200px;
-            margin: 5px 0;
+            padding: 15px;
+            margin: 10px 0;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
         }
-
-        .menu button:hover, .converter-menu button:hover {
-            background-color: #555;
+        .menu button:hover, .menu2 button:hover {
+            background-color: #007bff;
         }
-
-        .calculator-container {
-            margin-top: 20px;
-        }
-
         @media only screen and (max-width: 600px) {
-            .menu button, .converter-menu button {
-                padding: 10px 15px; 
-                font-size: 14px;
-            }
-
-            .menu button, .converter-menu button {
+            .menu button {
+                font-size: 1em;
                 padding: 10px;
-                font-size: 14px;
             }
         }
-
     </style>
 </head>
 <body>
     <div class="navbar">
+        <div class="brand">Calculadora Braba</div>
         <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
     </div>
 
-        <div id="welcome-text" class="welcome-text">
-            <h2 class="bemvindo">Bem-vindo(a)!</h2>
-            <p class="p1">Aqui você encontrará uma variedade de <a class ="descer" href="#calculadoras">calculadoras</a> e <a class="descerr" href="#conversores">conversores</a> para atender às suas necessidades diárias. Nossas ferramentas são projetadas para serem fáceis de usar e acessíveis a todos.</p>
-            <p class="p2">Explore as seções abaixo para acessar as calculadoras e conversores disponíveis. Temos desde calculadoras básicas para operações simples até calculadoras científicas para cálculos mais complexos. Na seção de conversores, você encontrará ferramentas para converter unidades de peso e temperatura.</p>
-            <p class="p3">Além disso, você pode alternar entre o modo diurno e noturno clicando no botão <button class="toggle" >☀</button> centralizado no topo da página. O modo diurno oferece uma aparência mais clara e vibrante, enquanto o modo noturno proporciona uma experiência de visualização mais suave e confortável para os olhos em ambientes com pouca luz.</p>
-        </div>
-        <div id="calculadoras" class="section">
-            <div class="calculator">
-                <h1 class="title">Calculadoras</h1>
-                <div class="menu">
-                    <button class="básica" onclick="redirectTo('básica.html')">Calculadora Básica</button>
-                    <button class="científica" onclick="redirectTo('científica.html')">Calculadora Científica</button>
-                </div>
-            </div>
-        </div>
-    
-        <div id="conversores" class="section">
-            <div class="conversor">
-                <h1 class="subtitle">Conversores</h1>
-                <div class="menu">
-                    <button class="peso" onclick="redirectTo('peso.html')">Conversor de Peso</button>
-                    <button class="temperatura" onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
-                </div>
-            </div>
-        </div>
+    <div class="welcome-text">
+        <h2>Bem-vindo(a)!</h2>
+        <p>Aqui você encontrará uma variedade de <a href="#calculadoras">calculadoras</a> e <a href="#conversores">conversores</a> para atender às suas necessidades diárias. Nossas ferramentas são projetadas para serem fáceis de usar e acessíveis a todos.</p>
+        <p>Explore as seções abaixo para acessar as calculadoras e conversores disponíveis. Temos desde calculadoras básicas para operações simples até calculadoras científicas para cálculos mais complexos. Na seção de conversores, você encontrará ferramentas para converter unidades de peso e temperatura.</p>
+        <p>Além disso, você pode alternar entre o modo diurno e noturno clicando no botão <button class="toggle">☀</button> no topo da página.</p>
+    </div>
 
-        <!-- <footer>
-            <p>&copy; 2024 Calculadora Braba</p>
-        </footer> -->
+    <div id="calculadoras" class="section">
+        <h1>Calculadoras</h1>
+        <div class="menu">
+            <button class="basica"onclick="redirectTo('básica.html')">Calculadora Básica</button>
+            <button class="cientifica"onclick="redirectTo('científica.html')">Calculadora Científica</button>
+        </div>
+    </div>
+
+    <div id="conversores" class="section2">
+        <h1>Conversores</h1>
+        <div class="menu2">
+            <button class="peso"onclick="redirectTo('peso.html')">Conversor de Peso</button>
+            <button class="temperatura"onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
+        </div>
+    </div>
 
     <script>
         function redirectTo(page) {
@@ -187,62 +153,64 @@
 
         function toggleDarkMode() {
             const body = document.body;
-            const tudo = document.querySelector('.tudo');
-            const footer = document.querySelector('footer');
-            const titulo = document.querySelector('.title');
-            const bemvindo = document.querySelector('.bemvindo');
-            const descer = document.querySelector('.descer');
-            const descerr = document.querySelector('.descerr');
-            const pa = document.querySelector('.p1');
-            const pb = document.querySelector('.p2');
-            const pc = document.querySelector('.p3');
-            const subtitulo = document.querySelector('.subtitle');
-            const básica = document.querySelector('.básica');
-            const científica = document.querySelector('.científica');
-            const peso = document.querySelector('.peso');
-            const temperatura = document.querySelector('.temperatura');
             const toggleButton = document.querySelector('.toggle-dark-mode');
             const toggle = document.querySelector('.toggle');
+            const section = document.querySelector('.section');
+            const section2 = document.querySelector('.section2');
+            const básica = document.querySelector('.basica');
+            const científica = document.querySelector('.cientifica');
+            const peso = document.querySelector('.peso');
+            const temperatura = document.querySelector('.temperatura');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 body.style.backgroundColor = '#222';
-                toggle.style.backgroundColor = '#222';
-                titulo.style.color = 'white';
-                subtitulo.style.color = 'white';
-                bemvindo.style.color = 'white';
-                descer.style.color = 'white';
-                descerr.style.color = 'white';
-                pa.style.color = 'white';
-                pb.style.color = 'white';
-                pc.style.color = 'white';
-                toggle.style.color = 'white';
-                básica.style.backgroundColor = '#333';
-                científica.style.backgroundColor = '#333';
-                peso.style.backgroundColor = '#333';
-                temperatura.style.backgroundColor = '#333';
-                body.style.color = '#eee';
+                body.style.color = '#f5f5f5';
                 toggleButton.textContent = '☀';
                 toggle.textContent = '☀';
+                toggle.style.backgroundColor = '#222';
+                toggle.style.color = 'white';
+                section.style.backgroundColor = '#333';
+                section2.style.backgroundColor = '#333';
+                básica.style.backgroundColor = '#444';
+                básica.onmouseover = function() { básica.style.backgroundColor = '#007bff'; };
+                básica.onmouseleave = function() { básica.style.backgroundColor = '#444'; };
+                científica.style.backgroundColor = '#444';
+                científica.onmouseover = function() { científica.style.backgroundColor = '#007bff'; };
+                científica.onmouseleave = function() { científica.style.backgroundColor = '#444'; };
+                peso.style.backgroundColor = '#444';
+                peso.onmouseover = function() { peso.style.backgroundColor = '#007bff'; };
+                peso.onmouseleave = function() { peso.style.backgroundColor = '#444'; };
+                temperatura.style.backgroundColor = '#444';
+                temperatura.onmouseover = function() { temperatura.style.backgroundColor = '#007bff'; };
+                temperatura.onmouseleave = function() { temperatura.style.backgroundColor = '#444'; };
+                toggleButton.style.transition = 'color 0.3s';
+                toggleButton.onmouseover = function() { toggleButton.style.color = '#1E90FF'; };
+                toggleButton.onmouseleave = function() { toggleButton.style.color = 'white'; };
             } else {
                 body.classList.add('dark-mode');
-                body.style.backgroundColor = 'white';
-                toggle.style.backgroundColor = 'white';
-                titulo.style.color = 'black';
-                subtitulo.style.color = 'black';
-                bemvindo.style.color = 'black';
-                descer.style.color = 'black';
-                descerr.style.color = 'black';
-                pa.style.color = 'black';
-                pb.style.color = 'black';
-                pc.style.color = 'black';
-                toggle.style.color = 'black';
-                básica.style.backgroundColor = '#007bff';
-                científica.style.backgroundColor = '#007bff';
-                peso.style.backgroundColor = '#007bff';
-                temperatura.style.backgroundColor = '#007bff';
-                body.style.color = '#ddd';
+                body.style.backgroundColor = '#f5f5f5';
+                body.style.color = '#222';
                 toggleButton.textContent = '☾';
-                toggle.textContent = '☾'
+                toggle.textContent = '☾';
+                toggle.style.backgroundColor = '#f5f5f5';
+                toggle.style.color = 'black';
+                section.style.backgroundColor = 'white';
+                section2.style.backgroundColor = 'white';
+                básica.style.backgroundColor = '#007bff';
+                básica.onmouseover = function() { básica.style.backgroundColor = '#0056b3'; };
+                básica.onmouseleave = function() { básica.style.backgroundColor = '#007bff'; };
+                científica.style.backgroundColor = '#007bff';
+                científica.onmouseover = function() { científica.style.backgroundColor = '#0056b3'; };
+                científica.onmouseleave = function() { científica.style.backgroundColor = '#007bff'; };
+                peso.style.backgroundColor = '#007bff';
+                peso.onmouseover = function() { peso.style.backgroundColor = '#0056b3'; };
+                peso.onmouseleave = function() { peso.style.backgroundColor = '#007bff'; };
+                temperatura.style.backgroundColor = '#007bff';
+                temperatura.onmouseover = function() { temperatura.style.backgroundColor = '#0056b3'; };
+                temperatura.onmouseleave = function() { temperatura.style.backgroundColor = '#007bff'; };
+                toggleButton.style.transition = 'color 0.3s';
+                toggleButton.onmouseover = function() { toggleButton.style.color = '#1E90FF'; };
+                toggleButton.onmouseleave = function() { toggleButton.style.color = 'white'; };
             }
         }
     </script>
