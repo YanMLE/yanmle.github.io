@@ -126,7 +126,7 @@
     <div class="welcome-text">
         <h2>Bem-vindo(a)!</h2>
         <p>Aqui você encontrará uma variedade de <a href="#calculadoras">calculadoras</a> e <a href="#conversores">conversores</a> para atender às suas necessidades diárias. Nossas ferramentas são projetadas para serem fáceis de usar e acessíveis a todos.</p>
-        <p>Explore as seções abaixo para acessar as calculadoras e conversores disponíveis. Temos desde calculadoras básicas para operações simples até calculadoras científicas para cálculos mais complexos. Na seção de conversores, você encontrará ferramentas para converter unidades de peso e temperatura.</p>
+        <p>Explore as seções abaixo para acessar as calculadoras e conversores disponíveis. Temos desde calculadoras básicas para operações simples até calculadoras científicas para cálculos mais complexos. Na seção de conversores, você encontrará ferramentas para converter unidades de peso, temperatura e comprimento.</p>
         <p>Além disso, você pode alternar entre o modo diurno e noturno clicando no botão <button class="toggle">☀</button> no topo da página.</p>
     </div>
 
@@ -143,6 +143,7 @@
         <div class="menu2">
             <button class="peso"onclick="redirectTo('peso.html')">Conversor de Peso</button>
             <button class="temperatura"onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
+            <button class="comprimento"onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
         </div>
     </div>
 
@@ -161,6 +162,7 @@
             const científica = document.querySelector('.cientifica');
             const peso = document.querySelector('.peso');
             const temperatura = document.querySelector('.temperatura');
+            const comprimento = document.querySelector('.comprimento');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 body.style.backgroundColor = '#222';
@@ -183,6 +185,9 @@
                 temperatura.style.backgroundColor = '#444';
                 temperatura.onmouseover = function() { temperatura.style.backgroundColor = '#007bff'; };
                 temperatura.onmouseleave = function() { temperatura.style.backgroundColor = '#444'; };
+                comprimento.style.backgroundColor = '#444';
+                comprimento.onmouseover = function() { comprimento.style.backgroundColor = '#007bff'; };
+                comprimento.onmouseleave = function() { comprimento.style.backgroundColor = '#444'; };
                 toggleButton.style.transition = 'color 0.3s';
                 toggleButton.onmouseover = function() { toggleButton.style.color = '#1E90FF'; };
                 toggleButton.onmouseleave = function() { toggleButton.style.color = 'white'; };
@@ -208,6 +213,9 @@
                 temperatura.style.backgroundColor = '#007bff';
                 temperatura.onmouseover = function() { temperatura.style.backgroundColor = '#0056b3'; };
                 temperatura.onmouseleave = function() { temperatura.style.backgroundColor = '#007bff'; };
+                comprimento.style.backgroundColor = '#007bff';
+                comprimento.onmouseover = function() { comprimento.style.backgroundColor = '#0056b3'; };
+                comprimento.onmouseleave = function() { comprimento.style.backgroundColor = '#007bff'; };
                 toggleButton.style.transition = 'color 0.3s';
                 toggleButton.onmouseover = function() { toggleButton.style.color = '#1E90FF'; };
                 toggleButton.onmouseleave = function() { toggleButton.style.color = 'white'; };
