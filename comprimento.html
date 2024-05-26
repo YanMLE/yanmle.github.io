@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-1981226824008179">
+<title>Conversor de Comprimento</title>
+<style>
+    body {
+        background-color: #000;
+        color: #ccc;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+    line-height: 1.6;
+    margin: 20px
+}
+
+main h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+main p {
+    margin: 10px 0;
+}
+
+main ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+    .container {
+        width: 300px;
+        margin: 100px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: white;
+    }
+    
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        background-color: #444;
+        color: white;
+    }
+    
+    input:focus {
+        outline: none;
+        border-color: #555;
+    }
+
+    .azul {
+        color: white;
+    }
+
+    footer {
+        text-align: center;
+        color: white;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+    <a href="index.html">Menu</a>
+    <a href="básica.html">Calculadora Básica</a>
+    <a href="científica.html">Calculadora Científica</a>
+    <a href="peso.html">Conversor de Peso</a>
+    <a href="temperatura.html">Conversor de Temperatura</a>
+</div>
+
+<div class="content" id="content">
+    <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+    <div class="container">
+        <h1>Conversor de Comprimento</h1>
+        <div class="input-container">
+            <label for="KmInput">Quilogramas:</label>
+            <input type="number" id="KmInput" oninput="converterKm()">
+        </div>
+        <div class="input-container">
+            <label for="YdInput">Jardas:</label>
+            <input type="number" id="YdInput" oninput="converterYd()">
+        </div>
+        <div class="input-container">
+            <label for="MiInput">Milhas:</label>
+            <input type="number" id="MiInput" oninput="converterMi()">
+        </div>
+        <button id="toggleButton" onclick="toggleUnidades()">Unidades do Sistema Métrico</button>
+        <div class="azul" id="result"></div>
+    </div>
+</div>
+<header>
+    <h1>Conversão de Unidades de Comprimento no Sistema Métrico</h1>
+</header>
+<main>
+    <section>
+        <h2>Unidades de Comprimento</h2>
+        <p>No sistema métrico decimal, as unidades de comprimento são baseadas no metro (m). As principais unidades de comprimento são:</p>
+        <ul>
+            <li>Kilômetro (km)</li>
+            <li>Hectômetro (hm)</li>
+            <li>Decâmetro (dam)</li>
+            <li>Metro (m)</li>
+            <li>Decímetro (dm)</li>
+            <li>Centímetro (cm)</li>
+            <li>Milímetro (mm)</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Fatores de Conversão</h2>
+        <p>Para converter entre essas unidades, usamos fatores de 10, pois o sistema métrico é um sistema decimal. Veja abaixo os fatores de conversão:</p>
+        <ul>
+            <li><strong>1 km = 1000 m</strong></li>
+            <li><strong>1 hm = 100 m</strong></li>
+            <li><strong>1 dam = 10 m</strong></li>
+            <li><strong>1 m = 1 m</strong></li>
+            <li><strong>1 dm = 0,1 m</strong></li>
+            <li><strong>1 cm = 0,01 m</strong></li>
+            <li><strong>1 mm = 0,001 m</strong></li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conversão para Milhas (mi) e Jardas (yd)</h2>
+        <p>Para converter quilômetros (km) para milhas (mi) e jardas (yd), usamos os seguintes fatores de conversão:</p>
+        <ul>
+            <li><strong>1 quilômetro (km) = 0,621371 milhas (mi)</strong></li>
+            <li><strong>1 milha (mi) = 1609,344 metros (m)</strong></li>
+            <li><strong>1 jarda (yd) = 0,9144 metros (m)</strong></li>
+        </ul>
+        <p>Para converter:</p>
+        <ul>
+            <li>Quilômetros para milhas: <strong>mi = km × 0,621371</strong></li>
+            <li>Quilômetros para jardas: <strong>yd = km × 1093,6133</strong></li>
+        </ul>
+    </section>
+    <section>
+        <h2>Exemplos de Conversão</h2>
+        <p>Aqui estão alguns exemplos práticos de como converter unidades de comprimento:</p>
+        <ul>
+            <li><strong>2 km para mi:</strong> 2 km × 0,621371 = 1,242742 mi</li>
+            <li><strong>500 m para km:</strong> 500 m ÷ 1000 = 0,5 km</li>
+            <li><strong>3 dam para m:</strong> 3 dam × 10 = 30 m</li>
+            <li><strong>2500 mm para m:</strong> 2500 mm ÷ 1000 = 2,5 m</li>
+            <li><strong>10 km para yd:</strong> 10 km × 1093,6133 = 10936,133 yd</li>
+        </ul>
+    </section>
+</main>
+
+<script>
+    let showingUnits = false;
+
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+    function converterKm() {
+        var Km = document.getElementById("KmInput").value;
+        var Yd = Km * 1093.6133;
+        var Mi = Yd / 1760;
+        document.getElementById("YdInput").value = Yd;
+        document.getElementById("MiInput").value = Mi;
+    }
+
+    function converterYd() {
+        var Yd = document.getElementById("YdInput").value;
+        var Km = Yd / 1093.6133;
+        var Mi = Km / 1.60934;
+        document.getElementById("KmInput").value = Km;
+        document.getElementById("MiInput").value = Mi;
+    }
+
+    function converterMi() {
+        var Mi = document.getElementById("MiInput").value;
+        var Km = Mi * 1.60934;
+        var Yd = Km * 1093.6133;
+        document.getElementById("KmInput").value = Km;
+        document.getElementById("YdInput").value = Yd;
+    }
+
+    function toggleUnidades() {
+        if (showingUnits) {
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("toggleButton").innerText = "Unidades do Sistema Métrico";
+        } else {
+            var Km = document.getElementById("KmInput").value;
+            var hm = Km * 10;
+            var dam = Km * 100;
+            var m = Km * 1000;
+            var dm = Km * 10000;
+            var cm = Km * 100000;
+            var mm = Km * 1000000;
+            var unidades = " " + "<br>" +
+                           "Hectômetro (hm): " + hm + "<br>" +
+                           " " + "<br>" +
+                           "Decâmetro (dam): " + dam + "<br>" +
+                           " " + "<br>" +
+                           "Metros (m): " + m + "<br>" +
+                           " " + "<br>" +
+                           "Decímetro (dm): " + dm + "<br>" +
+                           " " + "<br>" +
+                           "Centímetro (cm): " + cm + "<br>" +
+                           " " + "<br>" +
+                           "Milímetro (mm): " + mm;
+            document.getElementById("result").innerHTML = unidades;
+            document.getElementById("toggleButton").innerText = "Ocultar Unidades";
+        }
+        showingUnits = !showingUnits;
+    }
+</script>
+</body>
+</html>
