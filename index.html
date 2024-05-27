@@ -70,6 +70,10 @@
             max-width: 800px;
             text-align: center;
             margin-top: 80px;
+            padding: 20px; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         .welcome-text h2 {
             font-size: 2.5em;
@@ -156,6 +160,7 @@
             const body = document.body;
             const toggleButton = document.querySelector('.toggle-dark-mode');
             const toggle = document.querySelector('.toggle');
+            const welcometext = document.querySelector('.welcome-text');
             const section = document.querySelector('.section');
             const section2 = document.querySelector('.section2');
             const básica = document.querySelector('.basica');
@@ -171,6 +176,7 @@
                 toggle.textContent = '☀';
                 toggle.style.backgroundColor = '#222';
                 toggle.style.color = 'white';
+                welcometext.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
                 section.style.backgroundColor = '#333';
                 section2.style.backgroundColor = '#333';
                 básica.style.backgroundColor = '#444';
@@ -199,6 +205,7 @@
                 toggle.textContent = '☾';
                 toggle.style.backgroundColor = '#f5f5f5';
                 toggle.style.color = 'black';
+                welcometext.style.backgroundColor = 'rgba(215, 215, 215, 0.5)';
                 section.style.backgroundColor = 'white';
                 section2.style.backgroundColor = 'white';
                 básica.style.backgroundColor = '#007bff';
