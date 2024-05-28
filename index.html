@@ -139,6 +139,7 @@
         <div class="menu">
             <button class="basica"onclick="redirectTo('básica.html')">Calculadora Básica</button>
             <button class="cientifica"onclick="redirectTo('científica.html')">Calculadora Científica</button>
+            <button class="compostos"onclick="redirectTo('compostos.html')">Calculadora de Juros Compostos</button>
         </div>
     </div>
 
@@ -168,6 +169,7 @@
             const peso = document.querySelector('.peso');
             const temperatura = document.querySelector('.temperatura');
             const comprimento = document.querySelector('.comprimento');
+            const compostos = document.querySelector('.compostos');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 body.style.backgroundColor = '#222';
@@ -185,6 +187,9 @@
                 científica.style.backgroundColor = '#444';
                 científica.onmouseover = function() { científica.style.backgroundColor = '#007bff'; };
                 científica.onmouseleave = function() { científica.style.backgroundColor = '#444'; };
+                compostos.style.backgroundColor = '#444';
+                compostos.onmouseover = function() { compostos.style.backgroundColor = '#007bff'; };
+                compostos.onmouseleave = function() { compostos.style.backgroundColor = '#444'; };
                 peso.style.backgroundColor = '#444';
                 peso.onmouseover = function() { peso.style.backgroundColor = '#007bff'; };
                 peso.onmouseleave = function() { peso.style.backgroundColor = '#444'; };
@@ -214,6 +219,9 @@
                 científica.style.backgroundColor = '#007bff';
                 científica.onmouseover = function() { científica.style.backgroundColor = '#0056b3'; };
                 científica.onmouseleave = function() { científica.style.backgroundColor = '#007bff'; };
+                compostos.style.backgroundColor = '#007bff';
+                compostos.onmouseover = function() { compostos.style.backgroundColor = '#0056b3'; };
+                compostos.onmouseleave = function() { compostos.style.backgroundColor = '#007bff'; };
                 peso.style.backgroundColor = '#007bff';
                 peso.onmouseover = function() { peso.style.backgroundColor = '#0056b3'; };
                 peso.onmouseleave = function() { peso.style.backgroundColor = '#007bff'; };
