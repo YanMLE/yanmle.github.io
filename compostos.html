@@ -9,9 +9,6 @@
             font-family: Arial, sans-serif;
             background-color: black;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
             margin: 0;
         }
@@ -28,6 +25,29 @@
             padding-top: 60px;
             z-index: 1000;
         }
+
+        .fraction {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fraction span {
+    display: block;
+    text-align: center;
+}
+
+.over {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.double-hyphen {
+    font-family: monospace; 
+    letter-spacing: -0.29em; 
+    text-align: center;
+    display: inline-block;
+}
 
         .sidebar a {
             padding: 10px 15px;
@@ -56,20 +76,19 @@
         }
 
         .container {
-            background-color: #222;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 1000px;
-            max-width: 1000px;
-            text-align: center;
-            min-height: 400px; /* Altura mínima para evitar a subida */
+            
+        width: 1000px;
+        margin: 100px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .flex-layout {
             display: flex;
-            justify-content: space-between; /* Para distribuir as tabelas uniformemente na horizontal */
-            align-items: flex-start; /* Para alinhar as tabelas ao topo */
+            justify-content: space-between; 
+            align-items: flex-start; 
         }
 
         label {
@@ -77,6 +96,25 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
+
+        h1 {
+        text-align: center;
+        color: white;
+    }
+
+        main {
+    line-height: 1.6;
+    margin: 20px
+}
+
+main h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+main p {
+    margin: 10px 0;
+}
 
         input {
             width: 100%;
@@ -180,7 +218,7 @@
     </div>
     
     <div class="content" id="content">
-        <span style="font-size:30px;cursor:pointer;position:fixed;top:10px;left:10px;" onclick="openSidebar()">&#9776;</span>
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
 
         <div class="container">
             <h1>Calculadora de Juros Compostos</h1>
@@ -245,6 +283,55 @@
             <button class="reset-button" onclick="resetCalculator()" style="display:none;">Fazer Outro Cálculo</button>
         </div>
     </div>
+
+    <header>
+        <h1>Entendendo Juros Compostos</h1>
+    </header>
+    <main>
+        <section id="introduction">
+            <h2>Introdução</h2>
+            <p>Juros compostos são uma forma de calcular o crescimento de um investimento ao longo do tempo, onde os juros gerados a cada período são reinvestidos para gerar mais juros nos períodos subsequentes.</p>
+        </section>
+        <section id="formula">
+            <h2>Fórmula dos Juros Compostos</h2>
+            <p>A fórmula para calcular o montante acumulado com juros compostos é:</p>
+            <p><strong>M = P (1 + i)<sup>n</sup></strong></p>
+            <p>Onde:</p>
+            <ul>
+                <li><strong>M</strong> = Montante final</li>
+                <li><strong>P</strong> = Principal (investimento inicial)</li>
+                <li><strong>i</strong> = Taxa de juros por período</li>
+                <li><strong>n</strong> = Número de períodos</li>
+            </ul>
+        </section>
+        <section id="example">
+            <h2>Exemplo</h2>
+            <p>Suponha que você invista R$ 1.000,00 a uma taxa de juros de 5% ao ano, durante 3 anos. O montante acumulado será calculado como:</p>
+            <p>M = 1000 * (1 + 0.05)<sup>3</sup> = 1000 * 1.157625 = R$ 1.157,63</p>
+        </section>
+        <section id="formula-contrib">
+            <h2>Fórmula dos Juros Compostos com Contribuição Mensal</h2>
+            <p>A fórmula para calcular o montante acumulado com juros compostos e contribuições mensais é:</p>
+            <p><strong>M = P (1 + i)<sup>n</sup> + PMT <span class="fraction"><span>((1 + i)<sup>n</sup> - 1)</span><span class="over"><span class="double-hyphen">&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;</span></span><span>i</span></span></strong></p>
+
+            <p>Onde:</p>
+            <ul>
+                <li><strong>M</strong> = Montante final</li>
+                <li><strong>P</strong> = Principal (investimento inicial)</li>
+                <li><strong>PMT</strong> = Contribuição mensal</li>
+                <li><strong>i</strong> = Taxa de juros por período</li>
+                <li><strong>n</strong> = Número de períodos</li>
+            </ul>
+        </section>
+        <section id="example-contrib">
+            <h2>Exemplo com Contribuição Mensal</h2>
+            <p>Agora, suponha que além do investimento inicial de R$ 1.000,00, você também faça uma contribuição mensal de R$ 100,00 a uma taxa de juros de 5% ao ano, durante 3 anos. O montante acumulado será calculado como:</p>
+            <p><strong>Primeira parte:</strong> M1 = 1000 * (1 + 0.05)<sup>3</sup> = 1000 * 1.157625 = R$ 1.157,63</p>
+            <p><strong>Segunda parte:</strong> M2 = 100 * <span class="fraction"><span>(1 + 0.05)<sup>3</sup> - 1</span><span class="over"><span class="double-hyphen">&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;</span></span><span>0.05</span></span></strong>
+                 = 100 * <span class="fraction"><span>1.157625 - 1</span><span class="over"><span class="double-hyphen">&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;</span></span><span>0.05</span></span></strong> = 100 * 3.1525 = R$ 315,25</p>
+            <p><strong>Montante total:</strong> M = M1 + M2 = 1.157,63 + 315,25 = R$ 1.472,88</p>
+        </section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
