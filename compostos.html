@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Juros Compostos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .content {
+            transition: margin-left 0.5s;
+            padding: 16px;
+        }
+
+        .container {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 1000px;
+            max-width: 1000px;
+            text-align: center;
+            min-height: 400px; /* Altura mínima para evitar a subida */
+        }
+
+        .flex-layout {
+            display: flex;
+            justify-content: space-between; /* Para distribuir as tabelas uniformemente na horizontal */
+            align-items: flex-start; /* Para alinhar as tabelas ao topo */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #444;
+            margin-left: -8.5px;
+            color: #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff8800;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        .button1 {
+            margin-left: 1px;
+        }
+
+        button:hover {
+            background-color: #cc6f00;
+        }
+
+        #result, #total-invested, #total-interest {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #chart, #table-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+            overflow-x: auto;
+        }
+
+        .table-wrapper {
+            flex: 1;
+            margin: 5px;
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid white;
+        }
+
+        th {
+            background-color: black;
+        }
+
+        @media (max-width: 600px) {
+            #table-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="index.html">Menu</a>
+        <a href="básica.html">Calculadora Básica</a>
+        <a href="científica.html">Calculadora Científica</a>
+        <a href="peso.html">Conversor de Peso</a>
+        <a href="temperatura.html">Conversor de Temperatura</a>
+        <a href="comprimento.html">Conversor de Comprimento</a>
+    </div>
+    
+    <div class="content" id="content">
+        <span style="font-size:30px;cursor:pointer;position:fixed;top:10px;left:10px;" onclick="openSidebar()">&#9776;</span>
+
+        <div class="container">
+            <h1>Calculadora de Juros Compostos</h1>
+            <form id="compound-interest-form">
+                <label for="principal">Valor Inicial (R$):</label>
+                <input type="number" id="principal" required>
+                
+                <label for="rate">Taxa de Juros Anual (%):</label>
+                <input type="number" id="rate" step="0.01" required>
+                
+                <label for="years">Número de Anos:</label>
+                <input type="number" id="years" required>
+                
+                <label for="monthly">Contribuição Mensal (R$):</label>
+                <input type="number" id="monthly" required>
+                
+                <button type="button" class="button1" onclick="calculateCompoundInterest()">Calcular</button>
+            </form>
+            <div id="result"></div>
+            <p id="total-invested"></p>
+            <p id="total-interest"></p>
+            <div class="toggle-buttons">
+                <button type="button" onclick="toggleView('chart')">Ver Gráfico</button>
+                <button type="button" onclick="toggleView('table')">Ver Tabela</button>
+            </div>
+            <canvas id="chart" width="300" height="150"></canvas>
+            <div id="table-container" class="table-container">
+                <div class="table-wrapper" id="result-table-wrapper">
+                    <table id="result-table">
+                        <thead>
+                            <tr>
+                                <th>Mês</th>
+                                <th>Valor Futuro (R$)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="table-wrapper" id="invested-table-wrapper">
+                    <table id="invested-table">
+                        <thead>
+                            <tr>
+                                <th>Mês</th>
+                                <th>Total Investido (R$)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="table-wrapper" id="interest-table-wrapper">
+                    <table id="interest-table">
+                        <thead>
+                            <tr>
+                                <th>Mês</th>
+                                <th>Total em Juros (R$)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <button class="reset-button" onclick="resetCalculator()" style="display:none;">Fazer Outro Cálculo</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+            document.getElementById("content").style.marginLeft = "270px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+            document.getElementById("content").style.marginLeft = "20px";
+        }
+
+        let chart;
+
+        function calculateCompoundInterest() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const annualRate = parseFloat(document.getElementById('rate').value) / 100; // Taxa de juros anual
+            const years = parseInt(document.getElementById('years').value);
+            const monthlyContribution = parseFloat(document.getElementById('monthly').value);
+
+            if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || isNaN(monthlyContribution)) {
+                alert('Por favor, preencha todos os campos corretamente.');
+                return;
+            }
+
+            const months = years * 12;
+            let futureValues = [principal];
+            let futureValue = principal;
+            let totalInvested = principal;
+            let totalInterest = 0;
+
+            const resultTableBody = document.getElementById('result-table').querySelector('tbody');
+            const investedTableBody = document.getElementById('invested-table').querySelector('tbody');
+            const interestTableBody = document.getElementById('interest-table').querySelector('tbody');
+            resultTableBody.innerHTML = '';
+            investedTableBody.innerHTML = '';
+            interestTableBody.innerHTML = '';
+
+            for (let i = 1; i <= months; i++) {
+                const monthlyRate = (1 + annualRate) ** (1 / 12) - 1; // Taxa de juros mensal
+                futureValue *= 1 + monthlyRate; // Crescimento do valor inicial
+                futureValue += monthlyContribution; // Adição da contribuição mensal
+                futureValues.push(futureValue);
+
+                totalInvested += monthlyContribution;
+
+                // Calcular o total em juros
+                totalInterest = futureValue - totalInvested;
+
+                // Adicionar linha à tabela de resultados
+                let resultRow = document.createElement('tr');
+                resultRow.innerHTML = `<td>${i}</td><td>R$ ${futureValue.toFixed(2)}</td>`;
+                resultTableBody.appendChild(resultRow);
+
+                // Adicionar linha à tabela de total investido
+                let investedRow = document.createElement('tr');
+                investedRow.innerHTML = `<td>${i}</td><td>R$ ${totalInvested.toFixed(2)}</td>`;
+                investedTableBody.appendChild(investedRow);
+
+                // Adicionar linha à tabela de total em juros
+                let interestRow = document.createElement('tr');
+                interestRow.innerHTML = `<td>${i}</td><td>R$ ${totalInterest.toFixed(2)}</td>`;
+                interestTableBody.appendChild(interestRow);
+            }
+
+            // Exibir os resultados
+            document.getElementById('result').innerText = `Valor Futuro: R$ ${futureValue.toFixed(2)}`;
+            document.getElementById('total-invested').innerText = `Total Investido: R$ ${totalInvested.toFixed(2)}`;
+            document.getElementById('total-interest').innerText = `Total em Juros: R$ ${totalInterest.toFixed(2)}`;
+
+            // Verificar se o gráfico já foi criado
+            if (!chart) {
+                // Criar o gráfico
+                const ctx = document.getElementById('chart').getContext('2d');
+                chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: Array.from({ length: months + 1 }, (_, i) => i.toString()), // Cria uma lista de meses
+                        datasets: [{
+                            label: 'Valor Futuro',
+                            data: futureValues,
+                            borderColor: '#FFAC5D',
+                            backgroundColor: 'rgba(255, 172, 93, 0.2)',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                ticks: {
+                                    color: 'white',
+                                    callback: function (value, index, values) {
+                                        return 'R$ ' + value.toFixed(2);
+                                    }
+                                },
+                                grid: {
+                                    color: '#EAEAEA' // Definir a cor das grades do eixo y para branco
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: '#EAEAEA' // Definir a cor das grades do eixo x para branco
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                // Atualizar os dados do gráfico
+                chart.data.labels = Array.from({ length: months + 1 }, (_, i) => i.toString()); // Cria uma lista de meses
+                chart.data.datasets[0].data = futureValues;
+                chart.update();
+            }
+
+            // Exibir o gráfico após o cálculo
+            document.getElementById('chart').style.display = 'block';
+
+            // Exibir o botão "Fazer Outro Cálculo" após o primeiro cálculo
+            const resetButton = document.querySelector('.reset-button');
+            resetButton.style.display = 'block';
+
+            // Remover o evento de clique atual
+            resetButton.removeEventListener('click', resetCalculator);
+
+            // Adicionar um novo evento de clique para resetar o formulário
+            resetButton.addEventListener('click', function() {
+                resetCalculator();
+                // Ocultar o botão novamente após ser clicado
+                resetButton.style.display = 'none';
+            });
+        }
+
+        function resetCalculator() {
+            document.getElementById('compound-interest-form').reset();
+            document.getElementById('result').innerText = '';
+            document.getElementById('total-invested').innerText = '';
+            document.getElementById('total-interest').innerText = '';
+
+            // Limpar tabelas
+            document.getElementById('result-table').querySelector('tbody').innerHTML = '';
+            document.getElementById('invested-table').querySelector('tbody').innerHTML = '';
+            document.getElementById('interest-table').querySelector('tbody').innerHTML = '';
+
+            // Limpar gráfico
+            const ctx = document.getElementById('chart').getContext('2d');
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            // Ocultar gráfico
+            document.getElementById('chart').style.display = 'none';
+
+            // Exibir botões novamente
+            document.querySelector('.toggle-buttons').style.display = 'flex';
+        }
+
+        function toggleView(view) {
+            const chart = document.getElementById('chart');
+            const tableContainer = document.getElementById('table-container');
+
+            if (view === 'chart') {
+                chart.style.display = 'block';
+                tableContainer.style.display = 'none';
+            } else if (view === 'table') {
+                chart.style.display = 'none';
+                tableContainer.style.display = 'flex';
+                tableContainer.style.justifyContent = 'space-between'; // Distribuir as tabelas uniformemente na horizontal
+            }
+        }
+    </script>
+</body>
+</html>
