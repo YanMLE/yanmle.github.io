@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-1981226824008179">
+    <title>Conversor de Moedas</title>
+    <style>
+        body {
+        background-color: #000;
+        color: #ccc;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+select {
+    font-size: 16px; 
+}
+
+
+.container {
+        width: 350px;
+        margin: 100px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input, select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        background-color: #444;
+        color: white;
+    }
+
+.converter {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="index.html">Menu</a>
+        <a href="básica.html">Calculadora Básica</a>
+        <a href="científica.html">Calculadora Científica</a>
+        <a href="compostos.html">Calculadora de Juros Compostos</a>
+        <a href="peso.html">Conversor de Peso</a>
+        <a href="temperatura.html">Conversor de Temperatura</a>
+        <a href="comprimento.html">Conversor de Comprimento</a>
+    </div>
+    
+    <div class="content" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+    <div class="container">
+        <h1>Conversor de Moedas</h1>
+        <div class="converter">
+            <div class="input-group">
+                <label for="fromAmount">De:</label>
+                <input type="number" id="fromAmount" placeholder="Digite o valor">
+                <select id="fromCurrency"><option value="BRL" selected>Real Brasileiro (BRL)</option></select>
+            </div>
+            <div class="input-group">
+                <label for="toAmount">Para:</label>
+                <input type="number" id="toAmount" placeholder="Digite o valor">
+                <select id="toCurrency"><option value="USD" selected>Dólar Estadounidense (USD)</option></select>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const apiKey = 'b7e8f528f646ec97e1eb5288';
+    const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
+
+    const fromCurrency = document.getElementById('fromCurrency');
+    const toCurrency = document.getElementById('toCurrency');
+    const fromAmount = document.getElementById('fromAmount');
+    const toAmount = document.getElementById('toAmount');
+
+    const currencyNames = {
+    "USD": "Dólar Estadounidense",
+    "BRL": "Real Brasileiro",
+    "EUR": "Euro",
+    "JPY": "Iene Japonês",
+    "GBP": "Libra Esterlina",
+    "AUD": "Dólar Australiano",
+    "CAD": "Dólar Canadense",
+    "CHF": "Franco Suíço",
+    "CNY": "Yuan Chinês",
+    "SEK": "Coroa Sueca",
+    "AED": "Dirham dos Emirados Árabes Unidos",
+    "AFN": "Afegane Afegão",
+    "ALL": "Lek Albanês",
+    "AMD": "Dram Armênio",
+    "ANG": "Florim das Antilhas Neerlandesas",
+    "AOA": "Kwanza Angolano",
+    "ARS": "Peso Argentino",
+    "AWG": "Florim Arubano",
+    "AZN": "Manat Azeri",
+    "BAM": "Marco Conversível da Bósnia-Herzegovina",
+    "BBD": "Dólar de Barbados",
+    "BDT": "Taka de Bangladesh",
+    "BGN": "Lev Búlgaro",
+    "BHD": "Dinar do Bahrein",
+    "BIF": "Franco Burundiano",
+    "BMD": "Dólar das Bermudas",
+    "BND": "Dólar do Brunei",
+    "BOB": "Boliviano",
+    "BSD": "Dólar das Bahamas",
+    "BTN": "Ngultrum do Butão",
+    "BWP": "Pula de Botswana",
+    "BYN": "Rublo Bielorrusso",
+    "BZD": "Dólar de Belize",
+    "CAD": "Dólar Canadense",
+    "CDF": "Franco Congolês",
+    "CHF": "Franco Suíço",
+    "CLP": "Peso Chileno",
+    "CNY": "Yuan Chinês",
+    "COP": "Peso Colombiano",
+    "CRC": "Colón Costarriquenho",
+    "CUC": "Peso Cubano Conversível",
+    "CUP": "Peso Cubano",
+    "CVE": "Escudo Cabo-Verdiano",
+    "CZK": "Coroa Checa",
+    "DJF": "Franco Djiboutiano",
+    "DKK": "Coroa Dinamarquesa",
+    "DOP": "Peso Dominicano",
+    "DZD": "Dinar Argelino",
+    "ERN": "Nakfa da Eritreia",
+    "ETB": "Birr Etíope",
+    "FJD": "Dólar de Fiji",
+    "FKP": "Libra das Ilhas Falkland",
+    "GEL": "Lari Georgiano",
+    "GHS": "Cedi de Gana",
+    "GIP": "Libra de Gibraltar",
+    "GMD": "Dalasi Gambiano",
+    "GNF": "Franco Guineense",
+    "GTQ": "Quetzal da Guatemala",
+    "GYD": "Dólar da Guiana",
+    "HKD": "Dólar de Hong Kong",
+    "HNL": "Lempira Hondurenha",
+    "HRK": "Kuna Croata",
+    "HTG": "Gourde Haitiano",
+    "HUF": "Forint Húngaro",
+    "IDR": "Rupia Indonésia",
+    "ILS": "Novo Shekel Israelense",
+    "INR": "Rupia Indiana",
+    "IQD": "Dinar do Iraque",
+    "IRR": "Rial Iraniano",
+    "ISK": "Coroa Islandesa",
+    "JMD": "Dólar Jamaicano",
+    "JOD": "Dinar Jordaniano",
+    "JPY": "Iene Japonês",
+    "KES": "Xelim Queniano",
+    "KGS": "Som Quirguiz",
+    "KHR": "Riel Cambojano",
+    "KID": "Dólar de Kiribati",
+    "KMF": "Franco Comoriano",
+    "KPW": "Won Norte-Coreano",
+    "KRW": "Won Sul-Coreano",
+    "KWD": "Dinar Kuwaitiano",
+    "KYD": "Dólar das Ilhas Caimão",
+    "KZT": "Tenge Cazaque",
+    "LAK": "Kip Laosiano",
+    "LBP": "Libra Libanesa",
+    "LKR": "Rupia do Sri Lanka",
+    "LRD": "Dólar Liberiano",
+    "LSL": "Loti do Lesoto",
+    "LYD": "Dinar Líbio",
+    "MAD": "Dirham Marroquino",
+    "MDL": "Leu Moldávio",
+    "MGA": "Ariary Malgaxe",
+    "MKD": "Dinar Macedônio",
+    "MMK": "Kyat de Mianmar",
+    "MNT": "Tugrik Mongol",
+    "MOP": "Pataca de Macau",
+    "MRU": "Uguiya da Mauritânia",
+    "MUR": "Rupia Mauriciana",
+    "MVR": "Rupia das Maldivas",
+    "MWK": "Kwacha do Malawi",
+    "MXN": "Peso Mexicano",
+    "MYR": "Ringgit Malaio",
+    "MZN": "Metical Moçambicano",
+    "NAD": "Dólar da Namíbia",
+    "NGN": "Naira Nigeriana",
+    "NIO": "Córdoba Nicaraguense",
+    "NOK": "Coroa Norueguesa",
+    "NPR": "Rupia Nepalesa",
+    "NZD": "Dólar da Nova Zelândia",
+    "OMR": "Rial Omanense",
+    "PAB": "Balboa Panamenho",
+    "PEN": "Sol Peruano",
+    "PGK": "Kina da Papua Nova Guiné",
+    "PHP": "Peso Filipino",
+    "PKR": "Rupia Paquistanesa",
+    "PLN": "Zloty Polonês",
+    "PYG": "Guarani Paraguaio",
+    "QAR": "Rial Catariano",
+    "RON": "Leu Romeno",
+    "RSD": "Dinar Sérvio",
+    "RUB": "Rublo Russo",
+    "RWF": "Franco Ruandês",
+    "SAR": "Riyal Saudita",
+    "SBD": "Dólar das Ilhas Salomão",
+    "SCR": "Rupia Seichelense",
+    "SDG": "Libra Sudanesa",
+    "SEK": "Coroa Sueca",
+    "SGD": "Dólar de Singapura",
+    "SHP": "Libra de Santa Helena",
+    "SLL": "Leone de Serra Leoa",
+    "SOS": "Xelim Somali",
+    "SRD": "Dólar do Suriname",
+    "SSP": "Libra Sul-Sudanesa",
+    "STN": "Dobra de São Tomé e Príncipe",
+    "SYP": "Libra Síria",
+    "SZL": "Lilangeni da Suazilândia",
+    "THB": "Baht Tailandês",
+    "TJS": "Somoni do Tajiquistão",
+    "TMT": "Manat Turcomeno",
+    "TND": "Dinar Tunisino",
+    "TOP": "Pa'anga de Tonga",
+    "TRY": "Lira Turca",
+    "TTD": "Dólar de Trindade e Tobago",
+    "TWD": "Novo Dólar Taiwanês",
+    "TZS": "Xelim Tanzaniano",
+    "UAH": "Hryvnia Ucraniano",
+    "UGX": "Xelim Ugandense",
+    "UYU": "Peso Uruguaio",
+    "UZS": "Som do Uzbequistão",
+    "VES": "Bolívar Venezuelano",
+    "VND": "Dong Vietnamita",
+    "VUV": "Vatu de Vanuatu",
+    "WST": "Tala de Samoa",
+    "XAF": "Franco CFA Central",
+    "XCD": "Dólar do Caribe Oriental",
+    "XDR": "Direito Especial de Saque",
+    "XOF": "Franco CFA Oeste",
+    "XPF": "Franco CFP",
+    "YER": "Rial Iemenita",
+    "ZAR": "Rand Sul-Africano",
+    "ZMW": "Kwacha Zambiano",
+    "ZWL": "Dólar do Zimbábue"
+};
+
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const currencies = Object.keys(data.conversion_rates);
+            currencies.forEach(currency => {
+                const optionFrom = document.createElement('option');
+                const optionTo = document.createElement('option');
+                const currencyName = currencyNames[currency] || currency;
+                optionFrom.value = currency;
+                optionFrom.textContent = `${currencyName} (${currency})`;
+                optionTo.value = currency;
+                optionTo.textContent = `${currencyName} (${currency})`;
+                fromCurrency.appendChild(optionFrom);
+                toCurrency.appendChild(optionTo);
+            });
+        });
+
+    const convert = (from, to, amount, resultElement) => {
+        const conversionUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${from}/${to}/${amount}`;
+
+        fetch(conversionUrl)
+            .then(response => response.json())
+            .then(data => {
+                const convertedAmount = data.conversion_result;
+                resultElement.value = convertedAmount.toFixed(2);
+            });
+    };
+
+    fromAmount.addEventListener('input', () => {
+        const from = fromCurrency.value;
+        const to = toCurrency.value;
+        const amount = fromAmount.value;
+        if (amount !== '' && !isNaN(amount)) {
+            convert(from, to, amount, toAmount);
+        }
+    });
+
+    toAmount.addEventListener('input', () => {
+        const from = toCurrency.value;
+        const to = fromCurrency.value;
+        const amount = toAmount.value;
+        if (amount !== '' && !isNaN(amount)) {
+            convert(from, to, amount, fromAmount);
+        }
+    });
+
+    fromCurrency.addEventListener('change', () => {
+        fromAmount.dispatchEvent(new Event('input'));
+    });
+
+    toCurrency.addEventListener('change', () => {
+        toAmount.dispatchEvent(new Event('input'));
+    });
+});
+
+    </script>
+</body>
+</html>
