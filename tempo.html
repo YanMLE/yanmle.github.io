@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Tempo</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ccc;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+    line-height: 1.6;
+}
+
+main h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+main p {
+    margin: 10px 0;
+}
+
+main ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+        select {
+            font-size: 16px;
+        }
+
+        .container {
+            width: 350px;
+            margin: 100px auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #444;
+            color: white;
+        }
+
+        .converter {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .content {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                margin: 50px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="index.html">Menu</a>
+        <a href="básica.html">Calculadora Básica</a>
+        <a href="científica.html">Calculadora Científica</a>
+        <a href="compostos.html">Calculadora de Juros Compostos</a>
+        <a href="moedas.html">Conversor de Moedas</a>
+        <a href="peso.html">Conversor de Peso</a>
+        <a href="temperatura.html">Conversor de Temperatura</a>
+        <a href="comprimento.html">Conversor de Comprimento</a>
+    </div>
+
+    <div class="content" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+        <div class="container">
+            <h1>Conversor de Tempo</h1>
+            <div class="converter">
+                <div class="input-group">
+                    <label for="fromAmount">De:</label>
+                    <input type="number" id="fromAmount" placeholder="Digite o valor">
+                    <select id="fromUnit">
+                        <option value="seconds" selected>Segundo(s)</option>
+                        <option value="minutes">Minuto(s)</option>
+                        <option value="hours">Hora(s)</option>
+                        <option value="days">Dia(s)</option>
+                        <option value="weeks">Semana(s)</option>
+                        <option value="months">Mês(Meses)</option>
+                        <option value="months28">Mês(28 dias)</option>
+                        <option value="months29">Mês(29 dias)</option>
+                        <option value="months30">Mês(30 dias)</option>
+                        <option value="months31">Mês(31 dias)</option>
+                        <option value="years">Ano(s)</option>
+                        <option value="leapYears">Ano(s) Bissexto(s)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="toAmount">Para:</label>
+                    <input type="number" id="toAmount" placeholder="Digite o valor">
+                    <select id="toUnit">
+                        <option value="seconds">Segundo(s)</option>
+                        <option value="minutes" selected>Minuto(s)</option>
+                        <option value="hours">Hora(s)</option>
+                        <option value="days">Dia(s)</option>
+                        <option value="weeks">Semana(s)</option>
+                        <option value="months">Mês(Meses)</option>
+                        <option value="months28">Mês(28 dias)</option>
+                        <option value="months29">Mês(29 dias)</option>
+                        <option value="months30">Mês(30 dias)</option>
+                        <option value="months31">Mês(31 dias)</option>
+                        <option value="years">Ano(s)</option>
+                        <option value="leapYears">Ano(s) Bissexto(s)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <header>
+            <h1>Sobre as Unidades de Tempo</h1>
+        </header>
+    <main>
+        <section id="conversao">
+            <h2>Conversão de Unidades</h2>
+            <p>É possível converter entre diferentes unidades de tempo utilizando fatores de conversão. Por exemplo:</p>
+            <ul>
+                <li>1 minuto = 60 segundos</li>
+                <li>1 hora = 60 minutos</li>
+                <li>1 dia = 24 horas</li>
+                <li>1 semana = 7 dias</li>
+            </ul>
+        </section>
+
+        <section id="anos-bissextos">
+            <h2>Anos Bissextos</h2>
+            <p>Um ano bissexto é um ano que é divisível por 4, exceto para anos que são divisíveis por 100, a menos que sejam divisíveis por 400. Em outras palavras:</p>
+            <ul>
+                <li>Anos divisíveis por 4 são bissextos (por exemplo, 2004, 2008, 2012).</li>
+                <li>Entretanto, anos divisíveis por 100 não são bissextos, a menos que também sejam divisíveis por 400 (por exemplo, 1700, 1800, 1900 não são bissextos, mas 2000 é).</li>
+            </ul>
+            <p>Os anos bissextos têm um dia extra, o dia 29 de fevereiro, o que faz com que o ano tenha 366 dias em vez de 365 dias.</p>
+        </section>
+
+        <section id="dias-meses">
+            <h2>Dias nos Meses</h2>
+            <p>Os meses têm diferentes números de dias:</p>
+            <ul>
+                <li>Janeiro, Março, Maio, Julho, Agosto, Outubro e Dezembro têm 31 dias.</li>
+                <li>Fevereiro tem 28 dias, exceto em anos bissextos, quando tem 29 dias.</li>
+                <li>Abril, Junho, Setembro e Novembro têm 30 dias.</li>
+            </ul>
+        </section>
+
+        <section id="exemplos">
+            <h2>Exemplos</h2>
+            <p>Veja alguns exemplos de conversão de unidades de tempo:</p>
+            <ul>
+                <li>Converta 2 horas em minutos:</li>
+                <li>2 horas * 60 minutos/hora = 120 minutos</li>
+                <li>Converta 3 dias em horas:</li>
+                <li>3 dias * 24 horas/dia = 72 horas</li>
+            </ul>
+        </section>
+
+        <section id="conclusao">
+            <h2>Conclusão</h2>
+            <p>As unidades de tempo são fundamentais para medir a duração de eventos e intervalos. Saber converter entre diferentes unidades de tempo é útil em muitas situações do dia a dia.</p>
+        </section>
+    </main>
+        <script>
+            function openSidebar() {
+                document.getElementById("sidebar").style.width = "250px";
+                document.getElementById("content").style.marginLeft = "250px";
+            }
+
+            function closeSidebar() {
+                document.getElementById("sidebar").style.width = "0";
+                document.getElementById("content").style.marginLeft = "0";
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const fromUnit = document.getElementById('fromUnit');
+                const toUnit = document.getElementById('toUnit');
+                const fromAmount = document.getElementById('fromAmount');
+                const toAmount = document.getElementById('toAmount');
+
+                const conversionRates = {
+                    seconds: {
+                        seconds: 1,
+                        minutes: 1 / 60,
+                        hours: 1 / 3600,
+                        days: 1 / 86400,
+                        weeks: 1 / 604800,
+                        months: 1 / 2592000,
+                        months28: 1 / 2419200,
+                        months29: 1 / 2505600,
+                        months30: 1 / 2592000,
+                        months31: 1 / 2678400,
+                        years: 1 / 31536000,
+                        leapYears: 1 / 31622400
+                    },
+                    minutes: {
+                        seconds: 60,
+                        minutes: 1,
+                        hours: 1 / 60,
+                        days: 1 / 1440,
+                        weeks: 1 / 10080,
+                        months: 1 / 43200,
+                        months28: 1 / 40320,
+                        months29: 1 / 41760,
+                        months30: 1 / 43200,
+                        months31: 1 / 44640,
+                        years: 1 / 525600,
+                        leapYears: 1 / 527040
+                    },
+                    hours: {
+                        seconds: 3600,
+                        minutes: 60,
+                        hours: 1,
+                        days: 1 / 24,
+                        weeks: 1 / 168,
+                        months: 1 / 720,
+                        months28: 1 / 672,
+                        months29: 1 / 696,
+                        months30: 1 / 720,
+                        months31: 1 / 744,
+                        years: 1 / 8760,
+                        leapYears: 1 / 8784
+                    },
+                    days: {
+                        seconds: 86400,
+                        minutes: 1440,
+                        hours: 24,
+                        days: 1,
+                        weeks: 1 / 7,
+                        months: 1 / 30.4167,
+                        months28: 1 / 28,
+                        months29: 1 / 29,
+                        months30: 1 / 30,
+                        months31: 1 / 31,
+                        years: 1 / 365,
+                        leapYears: 1 / 366
+                    },
+                    weeks: {
+                        seconds: 604800,
+                        minutes: 10080,
+                        hours: 168,
+                        days: 7,
+                        weeks: 1,
+                        months: 1 / 4.34524,
+                        months28: 1 / 4,
+                        months29: 1 / 4.14286,
+                        months30: 1 / 4.28571,
+                        months31: 1 / 4.42857,
+                        years: 1 / 52.1429,
+                        leapYears: 1 / 52.2857
+                    },
+                    months: {
+                        seconds: 2592000,
+                        minutes: 43200,
+                        hours: 720,
+                        days: 30.4167,
+                        weeks: 4.34524,
+                        months: 1,
+                        months28: 30.4167 / 28,
+                        months29: 30.4167 / 29,
+                        months30: 30.4167 / 30,
+                        months31: 30.4167 / 31,
+                        years: 1 / 12,
+                        leapYears: 30.4167 / 366
+                    },
+                    months28: {
+                        seconds: 2419200,
+                        minutes: 40320,
+                        hours: 672,
+                        days: 28,
+                        weeks: 4,
+                        months: 28 / 30.4167,
+                        months28: 1,
+                        months29: 28 / 29,
+                        months30: 28 / 30,
+                        months31: 28 / 31,
+                        years: 28 / 365,
+                        leapYears: 28 / 366
+                    },
+                    months29: {
+                        seconds: 2505600,
+                        minutes: 41760,
+                        hours: 696,
+                        days: 29,
+                        weeks: 4.14286,
+                        months: 29 / 30.4167,
+                        months28: 29 / 28,
+                        months29: 1,
+                        months30: 29 / 30,
+                        months31: 29 / 31,
+                        years: 29 / 365,
+                        leapYears: 29 / 366
+                    },
+                    months30: {
+                        seconds: 2592000,
+                        minutes: 43200,
+                        hours: 720,
+                        days: 30,
+                        weeks: 4.28571,
+                        months: 30 / 30.4167,
+                        months28: 30 / 28,
+                        months29: 30 / 29,
+                        months30: 1,
+                        months31: 30 / 31,
+                        years: 30 / 365,
+                        leapYears: 30 / 366
+                    },
+                    months31: {
+                        seconds: 2678400,
+                        minutes: 44640,
+                        hours: 744,
+                        days: 31,
+                        weeks: 4.42857,
+                        months: 31 / 30.4167,
+                        months28: 31 / 28,
+                        months29: 31 / 29,
+                        months30: 31 / 30,
+                        months31: 1,
+                        years: 31 / 365,
+                        leapYears: 31 / 366
+                    },
+                    years: {
+                        seconds: 31536000,
+                        minutes: 525600,
+                        hours: 8760,
+                        days: 365,
+                        weeks: 52.1429,
+                        months: 12,
+                        months28: 365 / 28,
+                        months29: 365 / 29,
+                        months30: 365 / 30,
+                        months31: 365 / 31,
+                        years: 1,
+                        leapYears: 365 / 366
+                    },
+                    leapYears: {
+                        seconds: 31622400,
+                        minutes: 527040,
+                        hours: 8784,
+                        days: 366,
+                        weeks: 52.2857,
+                        months: 366 / 30.4167,
+                        months28: 366 / 28,
+                        months29: 366 / 29,
+                        months30: 366 / 30,
+                        months31: 366 / 31,
+                        years: 366 / 365,
+                        leapYears: 1
+                    }
+                };
+
+                function convert(from, to, amount) {
+                    const rate = conversionRates[from][to];
+                    return amount * rate;
+                }
+
+                function updateConversion(inputElement, outputElement, from, to) {
+                    const amount = parseFloat(inputElement.value);
+                    if (!isNaN(amount)) {
+                        const result = convert(from, to, amount);
+                        outputElement.value = result;
+                    }
+                }
+
+                fromAmount.addEventListener('input', () => {
+                    const from = fromUnit.value;
+                    const to = toUnit.value;
+                    updateConversion(fromAmount, toAmount, from, to);
+                });
+
+                toAmount.addEventListener('input', () => {
+                    const from = toUnit.value;
+                    const to = fromUnit.value;
+                    updateConversion(toAmount, fromAmount, from, to);
+                });
+
+                fromUnit.addEventListener('change', () => {
+                    fromAmount.dispatchEvent(new Event('input'));
+                });
+
+                toUnit.addEventListener('change', () => {
+                    toAmount.dispatchEvent(new Event('input'));
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
