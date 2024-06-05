@@ -147,6 +147,7 @@
     <div id="conversores" class="section2">
         <h1>Conversores</h1>
         <div class="menu2">
+            <button class="tempo"onclick="redirectTo('tempo.html')">Conversor de Tempo</button>
             <button class="moedas"onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
             <button class="peso"onclick="redirectTo('peso.html')">Conversor de Peso</button>
             <button class="temperatura"onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
@@ -169,6 +170,7 @@
             const básica = document.querySelector('.basica');
             const científica = document.querySelector('.cientifica');
             const moedas = document.querySelector('.moedas');
+            const tempo = document.querySelector('.tempo');
             const peso = document.querySelector('.peso');
             const temperatura = document.querySelector('.temperatura');
             const comprimento = document.querySelector('.comprimento');
@@ -193,6 +195,9 @@
                 compostos.style.backgroundColor = '#444';
                 compostos.onmouseover = function() { compostos.style.backgroundColor = '#007bff'; };
                 compostos.onmouseleave = function() { compostos.style.backgroundColor = '#444'; };
+                tempo.style.backgroundColor = '#444';
+                tempo.onmouseover = function() { tempo.style.backgroundColor = '#007bff'; };
+                tempo.onmouseleave = function() { tempo.style.backgroundColor = '#444'; };
                 moedas.style.backgroundColor = '#444';
                 moedas.onmouseover = function() { moedas.style.backgroundColor = '#007bff'; };
                 moedas.onmouseleave = function() { moedas.style.backgroundColor = '#444'; };
@@ -228,6 +233,9 @@
                 compostos.style.backgroundColor = '#007bff';
                 compostos.onmouseover = function() { compostos.style.backgroundColor = '#0056b3'; };
                 compostos.onmouseleave = function() { compostos.style.backgroundColor = '#007bff'; };
+                tempo.style.backgroundColor = '#007bff';
+                tempo.onmouseover = function() { tempo.style.backgroundColor = '#0056b3'; };
+                tempo.onmouseleave = function() { tempo.style.backgroundColor = '#007bff'; };
                 moedas.style.backgroundColor = '#007bff';
                 moedas.onmouseover = function() { moedas.style.backgroundColor = '#0056b3'; };
                 moedas.onmouseleave = function() { moedas.style.backgroundColor = '#007bff'; };
