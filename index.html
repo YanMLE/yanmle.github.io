@@ -141,6 +141,7 @@
             <button class="basica"onclick="redirectTo('básica.html')">Calculadora Básica</button>
             <button class="cientifica"onclick="redirectTo('científica.html')">Calculadora Científica</button>
             <button class="compostos"onclick="redirectTo('compostos.html')">Calculadora de Juros Compostos</button>
+            <button class="data"onclick="redirectTo('data.html')">Calculadora de Data</button>
         </div>
     </div>
 
@@ -148,10 +149,10 @@
         <h1>Conversores</h1>
         <div class="menu2">
             <button class="tempo"onclick="redirectTo('tempo.html')">Conversor de Tempo</button>
-            <button class="moedas"onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
             <button class="peso"onclick="redirectTo('peso.html')">Conversor de Peso</button>
             <button class="temperatura"onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
             <button class="comprimento"onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
+            <button class="moedas"onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
         </div>
     </div>
 
@@ -169,6 +170,7 @@
             const section2 = document.querySelector('.section2');
             const básica = document.querySelector('.basica');
             const científica = document.querySelector('.cientifica');
+            const data = document.querySelector('.data');
             const moedas = document.querySelector('.moedas');
             const tempo = document.querySelector('.tempo');
             const peso = document.querySelector('.peso');
@@ -195,6 +197,9 @@
                 compostos.style.backgroundColor = '#444';
                 compostos.onmouseover = function() { compostos.style.backgroundColor = '#007bff'; };
                 compostos.onmouseleave = function() { compostos.style.backgroundColor = '#444'; };
+                data.style.backgroundColor = '#444';
+                data.onmouseover = function() { data.style.backgroundColor = '#007bff'; };
+                data.onmouseleave = function() { data.style.backgroundColor = '#444'; };
                 tempo.style.backgroundColor = '#444';
                 tempo.onmouseover = function() { tempo.style.backgroundColor = '#007bff'; };
                 tempo.onmouseleave = function() { tempo.style.backgroundColor = '#444'; };
@@ -233,6 +238,9 @@
                 compostos.style.backgroundColor = '#007bff';
                 compostos.onmouseover = function() { compostos.style.backgroundColor = '#0056b3'; };
                 compostos.onmouseleave = function() { compostos.style.backgroundColor = '#007bff'; };
+                data.style.backgroundColor = '#007bff';
+                data.onmouseover = function() { data.style.backgroundColor = '#0056b3'; };
+                data.onmouseleave = function() { data.style.backgroundColor = '#007bff'; };
                 tempo.style.backgroundColor = '#007bff';
                 tempo.onmouseover = function() { tempo.style.backgroundColor = '#0056b3'; };
                 tempo.onmouseleave = function() { tempo.style.backgroundColor = '#007bff'; };
