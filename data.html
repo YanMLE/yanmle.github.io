@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981226824008179"
+     crossorigin="anonymous"></script>
+    <title>Calculadora de Data</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ccc;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+        select {
+            width: calc(50% - 20px); 
+            padding: 10px;
+            margin-right: 41px;
+            margin-left: 41px;
+            margin-bottom: 16px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #444;
+            color: white;
+        }
+
+        input {
+            width: calc(50% - 20px);
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #444;
+            color: white;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: right; 
+        }
+
+        button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            display: block; 
+            margin: 20px auto 0; 
+            box-sizing: border-box; 
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                margin: 50px auto;
+            }
+
+            input, select, button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="index.html">Menu</a>
+        <a href="básica.html">Calculadora Básica</a>
+        <a href="científica.html">Calculadora Científica</a>
+        <a href="compostos.html">Calculadora de Juros Compostos</a>
+        <a href="tempo.html">Conversor de Tempo</a>
+        <a href="moedas.html">Conversor de Moedas</a>
+        <a href="peso.html">Conversor de Peso</a>
+        <a href="temperatura.html">Conversor de Temperatura</a>
+        <a href="comprimento.html">Conversor de Comprimento</a>
+    </div>
+    
+    <div class="content" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+    <div class="container">
+        <h1>Calculadora de Data</h1>
+        <input type="date" id="date">
+        <input type="time" id="time" step="1">
+        <select id="operation">
+            <option value="add">Somar</option>
+            <option value="subtract">Subtrair</option>
+        </select>
+        <input type="number" id="days" placeholder="Dias">
+        <input type="number" id="hours" placeholder="Horas">
+        <input type="number" id="minutes" placeholder="Minutos">
+        <input type="number" id="seconds" placeholder="Segundos">
+        <button onclick="calculate()">Calcular</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+        function calculate() {
+            var dateInput = document.getElementById('date').value;
+            var year = parseInt(dateInput.substring(0, 4));
+            var month = parseInt(dateInput.substring(5, 7)) - 1; 
+            var day = parseInt(dateInput.substring(8, 10));
+
+            var inputDate = new Date(year, month, day);
+            var time = document.getElementById('time').value;
+            var operation = document.getElementById('operation').value;
+            var days = parseInt(document.getElementById('days').value) || 0;
+            var hours = parseInt(document.getElementById('hours').value) || 0;
+            var minutes = parseInt(document.getElementById('minutes').value) || 0;
+            var seconds = parseInt(document.getElementById('seconds').value) || 0;
+
+            var workingDate = new Date(inputDate); 
+
+            
+            if (time) {
+                var timeArray = time.split(":");
+                workingDate.setHours(parseInt(timeArray[0]));
+                workingDate.setMinutes(parseInt(timeArray[1]));
+                workingDate.setSeconds(parseInt(timeArray[2] || 0)); 
+            } else {
+             
+                workingDate.setHours(0);
+                workingDate.setMinutes(0);
+                workingDate.setSeconds(0);
+            }
+
+            
+            if (operation === 'subtract') {
+                seconds *= -1;
+                minutes *= -1;
+                hours *= -1;
+                days *= -1;
+            }
+
+           
+            workingDate.setSeconds(workingDate.getSeconds() + seconds);
+            workingDate.setMinutes(workingDate.getMinutes() + minutes);
+            workingDate.setHours(workingDate.getHours() + hours);
+            workingDate.setDate(workingDate.getDate() + days);
+
+            var resultDate = workingDate;
+            
+            document.getElementById('result').innerHTML = "Data resultante: " + resultDate.toLocaleString();
+        }
+    </script>
+</body>
+</html>
