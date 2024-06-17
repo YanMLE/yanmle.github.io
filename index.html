@@ -142,6 +142,8 @@
             <button class="cientifica"onclick="redirectTo('científica.html')">Calculadora Científica</button>
             <button class="compostos"onclick="redirectTo('compostos.html')">Calculadora de Juros Compostos</button>
             <button class="data"onclick="redirectTo('data.html')">Calculadora de Data</button>
+            <button class="idade"onclick="redirectTo('idade.html')">Calculadora de Idade</button>
+            <button class="enem"onclick="redirectTo('enem.html')">Calculadora da Média do ENEM</button>
         </div>
     </div>
 
@@ -171,6 +173,8 @@
             const básica = document.querySelector('.basica');
             const científica = document.querySelector('.cientifica');
             const data = document.querySelector('.data');
+            const idade = document.querySelector('.idade');
+            const enem = document.querySelector('.enem');
             const moedas = document.querySelector('.moedas');
             const tempo = document.querySelector('.tempo');
             const peso = document.querySelector('.peso');
@@ -200,6 +204,12 @@
                 data.style.backgroundColor = '#444';
                 data.onmouseover = function() { data.style.backgroundColor = '#007bff'; };
                 data.onmouseleave = function() { data.style.backgroundColor = '#444'; };
+                idade.style.backgroundColor = '#444';
+                idade.onmouseover = function() { idade.style.backgroundColor = '#007bff'; };
+                idade.onmouseleave = function() { idade.style.backgroundColor = '#444'; };
+                enem.style.backgroundColor = '#444';
+                enem.onmouseover = function() { enem.style.backgroundColor = '#007bff'; };
+                enem.onmouseleave = function() { enem.style.backgroundColor = '#444'; };
                 tempo.style.backgroundColor = '#444';
                 tempo.onmouseover = function() { tempo.style.backgroundColor = '#007bff'; };
                 tempo.onmouseleave = function() { tempo.style.backgroundColor = '#444'; };
@@ -241,6 +251,12 @@
                 data.style.backgroundColor = '#007bff';
                 data.onmouseover = function() { data.style.backgroundColor = '#0056b3'; };
                 data.onmouseleave = function() { data.style.backgroundColor = '#007bff'; };
+                idade.style.backgroundColor = '#007bff';
+                idade.onmouseover = function() { idade.style.backgroundColor = '#0056b3'; };
+                idade.onmouseleave = function() { idade.style.backgroundColor = '#007bff'; };
+                enem.style.backgroundColor = '#007bff';
+                enem.onmouseover = function() { enem.style.backgroundColor = '#0056b3'; };
+                enem.onmouseleave = function() { enem.style.backgroundColor = '#007bff'; };
                 tempo.style.backgroundColor = '#007bff';
                 tempo.onmouseover = function() { tempo.style.backgroundColor = '#0056b3'; };
                 tempo.onmouseleave = function() { tempo.style.backgroundColor = '#007bff'; };
