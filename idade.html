@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Idade</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1981226824008179"
+     crossorigin="anonymous"></script>
+<style>
+    body {
+        background-color: #000;
+        color: #ccc;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 400px;
+        margin: 100px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block; 
+        margin-bottom: 10px; 
+        text-align: left;
+    }
+
+    input {
+        width: calc(100% - 20px); 
+        padding: 10px;
+        margin-bottom: 16px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        background-color: #444;
+        color: white;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        display: block; 
+        margin: 20px auto 0; 
+        box-sizing: border-box; 
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+    #resultado {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            width: 90%;
+            margin: 50px auto;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="index.html">Menu</a>
+        <a href="básica.html">Calculadora Básica</a>
+        <a href="científica.html">Calculadora Científica</a>
+        <a href="compostos.html">Calculadora de Juros Compostos</a>
+        <a href="data.html">Calculadora de Data</a>
+        <a href="enem.html">Calculadora da Média do ENEM</a>
+        <a href="tempo.html">Conversor de Tempo</a>
+        <a href="peso.html">Conversor de Peso</a>
+        <a href="temperatura.html">Conversor de Temperatura</a>
+        <a href="comprimento.html">Conversor de Comprimento</a>
+        <a href="moedas.html">Conversor de Moedas</a>
+        <a href="moedas.html"></a>
+        <a href="moedas.html"></a>
+        <a href="moedas.html"></a>
+        <a href="moedas.html"></a>
+    </div>
+    
+    <div class="content" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+<div class="container">
+    <h2>Calculadora de Idade</h2>
+    <label for="birthdate">Data de Nascimento:</label>
+    <input type="date" id="birthdate">
+
+    <label for="specificDate">Idade na Data Específica:</label>
+    <input type="date" id="specificDate">
+    <button onclick="calculateAgeOnSpecificDate()">Calcular Idade</button>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+    function calculateAgeOnSpecificDate() {
+    var birthdate = document.getElementById("birthdate").value;
+    var specificDate = document.getElementById("specificDate").value;
+    var specificDateObj = new Date(specificDate);
+    var birthDateObj = new Date(birthdate);
+
+    var ageOnSpecificDate = specificDateObj.getFullYear() - birthDateObj.getFullYear();
+    var month = specificDateObj.getMonth() - birthDateObj.getMonth();
+    if (month < 0 || (month === 0 && specificDateObj.getDate() < birthDateObj.getDate())) {
+        ageOnSpecificDate--;
+    }
+
+    document.getElementById("resultado").innerHTML = "Idade: " + ageOnSpecificDate + " anos";
+}
+
+</script>
+</body>
+</html>
