@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853618235086140"
+     crossorigin="anonymous"></script>
+     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <title>Contato</title>
+    <style>
+        body {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            text-align: center;
+            margin-top: 80px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    
+    header, main, footer {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+    
+    header h1, footer p {
+        text-align: center;
+    }
+    
+    section {
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+    
+    section h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    section p {
+        text-align: justify;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #111;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        z-index: 9999;
+    }
+    .navbar .brand {
+        font-size: 1.5em;
+        color: #fff;
+        margin: 0 40px;
+    }
+    .navbar a {
+        color: white;
+        margin: 0 10px;
+    }
+
+    .toggle-dark-mode {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: color 0.3s;
+        margin: 0 40px;
+    }
+    .toggle-dark-mode:hover {
+        color: #1E90FF;
+    }
+
+    a {
+        color: #1E90FF;
+    }
+    
+    form {
+        margin-top: 20px;
+        width: 80%;
+        max-width: 600px;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin: 0 auto; 
+        text-align: left; 
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    form label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1em;
+        color: white;
+    }
+    form input, form textarea {
+        width: calc(100% - 22px); 
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        background-color: #333;
+        color: white;
+        box-sizing: border-box; 
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+    form textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    form button {
+        padding: 10px 20px;
+        background-color: #1E90FF;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    form button:hover {
+        background-color: #0056b3;
+    }
+    
+    footer {
+        text-align: center;
+        font-size: 0.8em;
+        color: #999;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                margin: 50px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">Calculadora Braba</div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
+    </div>
+    <main>
+        <form onsubmit="event.preventDefault(); enviarFormulario();">
+            <h1>Contato</h1>
+
+            <h2>Entre em Contato Conosco</h2>
+            <p>Utilize o formulário abaixo para nos enviar suas dúvidas, sugestões ou qualquer outra mensagem.</p>
+
+            <label for="nome"class='ome'>Nome:</label>
+            <input type="text" id="nome" name="nome" class='nom' required>
+            
+            <label for="email" class='mail'>Email:</label>
+            <input type="email" id="email" name="email" class='em' required>
+            
+            <label for="mensagem" class='sagem' >Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" class='mens' required></textarea>
+            
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </main>
+    <footer>
+        <p><a href="privacidade.html">Política de Privacidade</a> | <a href="index.html">Menu</a></p>
+        <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggleButton = document.querySelector('.toggle-dark-mode');
+            const footer = document.querySelector('footer');
+            
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.style.backgroundColor = 'black';
+                body.style.color = 'white';
+                document.querySelector('form').style.backgroundColor = '#222';
+                toggleButton.textContent = '☀';
+                footer.style.color = "#999";
+                document.querySelector('.ome').style.color = 'white';
+                document.querySelector('.nom').style.backgroundColor = '#333';
+                document.querySelector('.nom').style.color = 'white';
+                document.querySelector('.mail').style.color = 'white';
+                document.querySelector('.em').style.backgroundColor = '#333';
+                document.querySelector('.em').style.color = 'white';
+                document.querySelector('.sagem').style.color = 'white';
+                document.querySelector('.mens').style.backgroundColor = '#333';
+                document.querySelector('.mens').style.color = 'white';
+                document.querySelector('form button').style.backgroundColor = '#1E90FF';
+                document.querySelector('form button').style.color = 'white';
+            } else {
+                body.classList.add('dark-mode');
+                body.style.backgroundColor = '#f5f5f5';
+                body.style.color = 'black';
+                document.querySelector('form').style.backgroundColor = 'white';
+                toggleButton.textContent = '☾';
+                footer.style.color = "#111";
+                document.querySelector('.ome').style.color = 'black';
+                document.querySelector('.nom').style.backgroundColor = '#f5f5f5';
+                document.querySelector('.nom').style.color = 'black';
+                document.querySelector('.mail').style.color = 'black';
+                document.querySelector('.em').style.backgroundColor = '#f5f5f5';
+                document.querySelector('.em').style.color = 'black';
+                document.querySelector('.sagem').style.color = 'black';
+                document.querySelector('.mens').style.backgroundColor = '#f5f5f5';
+                document.querySelector('.mens').style.color = 'black';
+                document.querySelector('form button').style.backgroundColor = '#1E90FF';
+                document.querySelector('form button').style.color = 'black';
+            }
+        }
+        emailjs.init('AB0dQ-104_UJ7k6Xv');
+        
+        // Função para enviar o formulário
+        function enviarFormulario() {
+            // Captura os valores dos campos do formulário
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var mensagem = document.getElementById('mensagem').value;
+            
+            // Parâmetros para enviar o e-mail via EmailJS
+            var params = {
+                nome: nome,
+                email: email,
+                mensagem: mensagem
+            };
+            
+            // Envio do e-mail via EmailJS
+            emailjs.send('service_u3d3mq9', 'template_5106n2d', params)
+                .then(function(response) {
+                    console.log('E-mail enviado com sucesso!', response.status, response.text);
+                    alert('E-mail enviado com sucesso!');
+                    // Limpar os campos do formulário após o envio (opcional)
+                    document.getElementById('nome').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('mensagem').value = '';
+                }, function(error) {
+                    console.error('Erro ao enviar e-mail:', error);
+                    alert('Ocorreu um erro ao enviar o e-mail. Por favor, tente novamente.');
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853618235086140"
+     crossorigin="anonymous"></script>
+    <title>Política de Privacidade</title>
+    <style>
+        body {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            text-align: center;
+            margin-top: 80px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    
+    header, main, footer {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+    
+    header h1, footer p {
+        text-align: center;
+    }
+    
+    section {
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+    
+    section h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    section p {
+        text-align: justify;
+    }
+
+    .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #111;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 9999;
+        }
+        .navbar .brand {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0 40px;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 10px;
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 40px;
+        }
+        .toggle-dark-mode:hover {
+            color: #1E90FF;
+        }
+
+        a {
+            color: #1E90FF;
+        }
+    
+    footer {
+        text-align: center;
+        font-size: 0.8em;
+        color: #999;
+    }
+
+    @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                margin: 50px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">Calculadora Braba</div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
+    </div>
+
+    <header>
+        <h1>Política de Privacidade</h1>
+    </header>
+    <main>
+        <section>
+            <h2>1. Introdução</h2>
+            <p>Bem-vindo à Política de Privacidade do site "calculadorabraba.com.br"! Esta página descreve como coletamos, usamos e protegemos suas informações quando você utiliza nossos serviços.</p>
+            <p>Este site não possui recursos que exijam login ou coleta de dados pessoais dos usuários para funcionar corretamente.</p>
+        </section>
+        <section>
+            <h2>2. Coleta de Informações</h2>
+            <p>O site "calculadorabraba.com.br" não coleta cookies ou outras informações pessoais diretamente. No entanto, utilizamos o Google AdSense para exibir anúncios. O Google AdSense pode utilizar cookies para exibir anúncios relevantes com base nos interesses dos usuários.</p>
+            <p>Para mais informações sobre como o Google AdSense utiliza os cookies, visite <a href="https://policies.google.com/technologies/partner-sites" target="_blank">esta página do Google</a>.</p>
+        </section>
+        <section>
+            <h2>3. Uso de Informações</h2>
+            <p>As informações coletadas pelo Google AdSense são utilizadas para exibir anúncios personalizados. Não temos acesso a essas informações para outros fins além da exibição de anúncios.</p>
+        </section>
+        <section>
+            <h2>4. Alterações nesta Política</h2>
+            <p>Esta Política de Privacidade pode ser atualizada periodicamente. Recomendamos que você revise esta página ocasionalmente para estar informado sobre como estamos protegendo suas informações.</p>
+        </section>
+    </main>
+    <footer>
+        <p><a href="contato.html">Contato</a> | <a href="index.html">Menu</a></p>
+        <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function toggleDarkMode() {
+        const body = document.body;
+        const toggleButton = document.querySelector('.toggle-dark-mode');
+        const footer = document.querySelector('footer');
+        const a = document.querySelector('a');
+        const contato = document.querySelector('.contato');
+        const menu = document.querySelector('.menu');
+        if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.style.backgroundColor = 'black';
+                body.style.color = 'white';
+                toggleButton.textContent = '☀';
+                footer.style.color = "#999";
+            } else {
+                body.classList.add('dark-mode');
+                body.style.backgroundColor = 'white';
+                body.style.color = 'black';
+                toggleButton.textContent = '☾';
+                footer.style.color = "#111";
+}
+        }
+    </script>
+</body>
+</html>
