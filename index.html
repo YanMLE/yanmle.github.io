@@ -114,6 +114,15 @@
         .menu button:hover, .menu2 button:hover {
             background-color: #007bff;
         }
+        a {
+        color: #1E90FF;
+    }
+        footer {
+        text-align: center;
+        font-size: 0.8em;
+        color: #999;
+        margin-top: 20px;
+    }
         @media only screen and (max-width: 600px) {
             .menu button {
                 font-size: 1em;
@@ -157,7 +166,10 @@
             <button class="moedas"onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
         </div>
     </div>
-
+    <footer>
+        <p><a href="privacidade.html">Política de Privacidade</a> | <a href="contato.html">Contato</a></p>
+        <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+    </footer>
     <script>
         function redirectTo(page) {
             window.location.href = page;
@@ -181,6 +193,7 @@
             const temperatura = document.querySelector('.temperatura');
             const comprimento = document.querySelector('.comprimento');
             const compostos = document.querySelector('.compostos');
+            const footer = document.querySelector('footer');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 body.style.backgroundColor = '#222';
@@ -189,6 +202,7 @@
                 toggle.textContent = '☀';
                 toggle.style.backgroundColor = '#222';
                 toggle.style.color = 'white';
+                footer.style.color = "#999";
                 welcometext.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
                 section.style.backgroundColor = '#333';
                 section2.style.backgroundColor = '#333';
@@ -234,6 +248,7 @@
                 body.style.color = '#222';
                 toggleButton.textContent = '☾';
                 toggle.textContent = '☾';
+                footer.style.color = "#111";
                 toggle.style.backgroundColor = '#f5f5f5';
                 toggle.style.color = 'black';
                 welcometext.style.backgroundColor = 'rgba(215, 215, 215, 0.5)';
