@@ -189,48 +189,24 @@
 
     <section>
         <h2>Exercícios de Conversão de Unidades de Peso</h2>
-        
+        <p>Tente resolver os seguintes exercícios:</p>
         <ol>
-            <li>
-                <p><strong>Exercício 1:</strong> Converta 2500 gramas (g) para quilogramas (kg).</p>
-                <form id="ex1_form">
-                    <label for="ex1_input">Resposta:</label>
-                    <input type="text" id="ex1_input" name="ex1_input" required>
-                    <button type="submit">Verificar</button>
-                </form>
-                <p id="ex1_feedback"></p>
-            </li>
-            
-            <li>
-                <p><strong>Exercício 2:</strong> Converta 4500 quilogramas (kg) para toneladas métricas (t).</p>
-                <form id="ex2_form">
-                    <label for="ex2_input">Resposta:</label>
-                    <input type="text" id="ex2_input" name="ex2_input" required>
-                    <button type="submit">Verificar</button>
-                </form>
-                <p id="ex2_feedback"></p>
-            </li>
-            
-            <li>
-                <p><strong>Exercício 3:</strong> Converta 15 libras (lb) para quilogramas (kg). (Use o fator de conversão: 1 lb ≈ 0,4536 kg)</p>
-                <form id="ex3_form">
-                    <label for="ex3_input">Resposta:</label>
-                    <input type="text" id="ex3_input" name="ex3_input" required>
-                    <button type="submit">Verificar</button>
-                </form>
-                <p id="ex3_feedback"></p>
-            </li>
-            
-            <li>
-                <p><strong>Exercício 4:</strong> Converta 30 onças (oz) para gramas (g). (Use o fator de conversão: 1 oz ≈ 28,35 g)</p>
-                <form id="ex4_form">
-                    <label for="ex4_input">Resposta:</label>
-                    <input type="text" id="ex4_input" name="ex4_input" required>
-                    <button type="submit">Verificar</button>
-                </form>
-                <p id="ex4_feedback"></p>
-            </li>
+            <p><strong>Exercício 1:</strong> Converta 2500 gramas (g) para quilogramas (kg).</p>
+            <p><strong>Exercício 2:</strong> Converta 4500 quilogramas (kg) para toneladas métricas (t).</p>
+            <p><strong>Exercício 3:</strong> Converta 15 libras (lb) para quilogramas (kg). (Use o fator de conversão: 1 lb ≈ 0,4536 kg)</p>
+            <p><strong>Exercício 4:</strong> Converta 30 onças (oz) para gramas (g). (Use o fator de conversão: 1 oz ≈ 28,35 g)</p>
+
         </ol>
+        <button onclick="mostrarRespostas()">Mostrar Respostas</button>
+        <div id="respostas" style="display: none;">
+            <p>Respostas:</p>
+            <ol>
+                <li>2,5 quilogramas (kg)</li>
+                <li>4,5 toneladas métricas(t)</li>
+                <li>6,804 quilogramas (kg)</li>
+                <li>850,5 gramas (g)</li>
+            </ol>
+        </div>
     </section>
 
     <footer>
@@ -258,64 +234,14 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const form1 = document.querySelector('form:nth-of-type(1)');
-            const form2 = document.querySelector('form:nth-of-type(2)');
-            const form3 = document.querySelector('form:nth-of-type(3)');
-            const form4 = document.querySelector('form:nth-of-type(4)');
-            
-            form1.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const input1 = parseFloat(form1.querySelector('input').value);
-                const feedback1 = form1.parentElement.querySelector('.ex1_feedback');
-                if (input1 === 2.5) {
-                    feedback1.textContent = 'Correto! 2500 g = 2.5 kg.';
-                    feedback1.style.color = 'green';
-                } else {
-                    feedback1.textContent = 'Incorreto. Tente novamente.';
-                    feedback1.style.color = 'red';
-                }
-            });
-            
-            form2.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const input2 = parseFloat(form2.querySelector('input').value);
-                const feedback2 = form2.parentElement.querySelector('.ex2_feedback');
-                if (input2 === 4.5) {
-                    feedback2.textContent = 'Correto! 4500 kg = 4.5 t.';
-                    feedback2.style.color = 'green';
-                } else {
-                    feedback2.textContent = 'Incorreto. Tente novamente.';
-                    feedback2.style.color = 'red';
-                }
-            });
-            
-            form3.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const input3 = parseFloat(form3.querySelector('input').value);
-                const feedback3 = form3.parentElement.querySelector('.ex3_feedback');
-                if (input3 === 6.804) {
-                    feedback3.textContent = 'Correto! 15 lb ≈ 6.804 kg.';
-                    feedback3.style.color = 'green';
-                } else {
-                    feedback3.textContent = 'Incorreto. Tente novamente.';
-                    feedback3.style.color = 'red';
-                }
-            });
-            
-            form4.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const input4 = parseFloat(form4.querySelector('input').value);
-                const feedback4 = form4.parentElement.querySelector('.ex4_feedback');
-                if (input4 === 850.5) {
-                    feedback4.textContent = 'Correto! 30 oz ≈ 850.5 g.';
-                    feedback4.style.color = 'green';
-                } else {
-                    feedback4.textContent = 'Incorreto. Tente novamente.';
-                    feedback4.style.color = 'red';
-                }
-            });
-        });
+        function mostrarRespostas() {
+            var respostas = document.getElementById('respostas');
+            if (respostas.style.display === 'none') {
+                respostas.style.display = 'block';
+            } else {
+                respostas.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>    
