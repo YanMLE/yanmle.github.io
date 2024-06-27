@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853618235086140"
+     crossorigin="anonymous"></script>
+    <title>Entendendo Juros Compostos</title>
+    <style>
+        body {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            text-align: center;
+            margin-top: 80px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 18px; 
+        }
+    
+    header, main, footer {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+    
+    header h1, footer p {
+        text-align: center;
+        font-size: 2em; 
+    }
+    
+    section {
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+    
+    section h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    section p {
+        text-align: justify;
+        font-size: 1em; 
+    }
+
+    .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #111;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 9999;
+        }
+        .navbar .brand {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0 40px;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1em; 
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 40px;
+        }
+        .toggle-dark-mode:hover {
+            color: #1E90FF;
+        }
+
+        a {
+            color: #1E90FF;
+            font-size: 1em; 
+        }
+
+        button {
+            background-color: #1E90FF;
+            font-size: 1em; 
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.4em;
+            color: #999;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                margin: 50px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">Calculadora Braba <a href="blogs.html">Nossos Blogs</a></div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
+    </div>
+
+    <header>
+        <h1>Entendendo Juros Compostos</h1>
+        <p>Um guia completo sobre como juros compostos funcionam e como calcular.</p>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>O que são Juros Compostos?</h2>
+            <p>Juros compostos são uma forma de cálculo de juros sobre um capital inicial, onde os juros são calculados não apenas sobre o valor inicial investido ou emprestado, mas também sobre os juros acumulados ao longo do tempo.</p>
+            
+            <p>Em termos simples, enquanto os juros simples são calculados apenas sobre o montante inicial, os juros compostos levam em conta não apenas o principal (o montante inicial), mas também os juros acumulados em cada período. Isso significa que, à medida que o tempo passa, os juros compostos aumentam exponencialmente o valor do investimento ou da dívida.</p>
+            
+            <p>Matematicamente, a fórmula dos juros compostos pode ser expressa como:</p>
+            <p><strong>F = P * (1 + r/n)^(nt)</strong></p>
+            
+            <ul>
+                <li><strong>F</strong>: Valor futuro do investimento ou dívida, incluindo juros compostos.</li>
+                <li><strong>P</strong>: Valor inicial do investimento ou empréstimo (principal).</li>
+                <li><strong>r</strong>: Taxa de juros anual (em decimal).</li>
+                <li><strong>n</strong>: Frequência de capitalização dos juros por ano.</li>
+                <li><strong>t</strong>: Número de anos que o dinheiro é investido ou emprestado.</li>
+            </ul>
+            
+            <p>Essa fórmula permite calcular o valor futuro de um investimento com juros compostos, considerando a taxa de juros, a frequência de capitalização e o período de tempo envolvido.</p>
+        </section>
+
+        <section class="section">
+            <h2>Vantagens e Desvantagens dos Juros Compostos</h2>
+            <h3>Vantagens dos Juros Compostos</h3>
+            <ul>
+                <li><strong>Valorização Exponencial:</strong> Os juros compostos permitem que o valor do investimento cresça exponencialmente ao longo do tempo, devido à reinvestimento dos juros acumulados.</li>
+                <li><strong>Estímulo ao Investimento a Longo Prazo:</strong> São ideais para investimentos de longo prazo, onde o efeito dos juros compostos pode significar um aumento significativo no retorno final.</li>
+                <li><strong>Maior Rentabilidade:</strong> Comparados aos juros simples, os juros compostos geralmente resultam em maior rentabilidade final devido à capitalização frequente dos juros.</li>
+            </ul>
+            
+            <h3>Desvantagens dos Juros Compostos</h3>
+            <ul>
+                <li><strong>Impacto Negativo em Dívidas:</strong> Para empréstimos e dívidas, os juros compostos podem levar a um aumento rápido do montante devido, especialmente se não forem pagos regularmente.</li>
+                <li><strong>Complexidade de Cálculo:</strong> O cálculo dos juros compostos pode ser mais complexo do que o cálculo de juros simples, exigindo o uso de fórmulas matemáticas específicas.</li>
+                <li><strong>Dependência de Taxas de Juros:</strong> O retorno final do investimento com juros compostos depende significativamente das taxas de juros, que podem variar ao longo do tempo.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Exercícios Práticos de Cálculo de Juros Compostos</h2>
+            <div class="exercise">
+                <h3>Exercício 1</h3>
+                <p>Calcule o valor futuro de um investimento de R$ 10.000,00, com uma taxa de juros anual de 5%, capitalizados mensalmente durante 5 anos.</p>
+                <p><strong>Fórmula:</strong> F = P * (1 + r/n)^(nt)</p>
+                <p><strong>Solução:</strong></p>
+                <p>Substituindo os valores na fórmula:</p>
+                <p>F = 10000 * (1 + 0.05/12)^(12*5)</p>
+                <p>F = 10000 * (1 + 0.0041667)^60</p>
+                <p>F ≈ 10000 * 1.27628</p>
+                <p>F ≈ 12,762.80</p>
+                <p>O valor futuro do investimento será aproximadamente R$ 12.762,80.</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>Exercício 2</h3>
+                <p>Um empréstimo de R$ 5.000,00 é tomado com uma taxa de juros anual de 8%, capitalizados trimestralmente. Qual será o montante devido após 3 anos?</p>
+                <p><strong>Fórmula:</strong> F = P * (1 + r/n)^(nt)</p>
+                <p><strong>Solução:</strong></p>
+                <p>Substituindo os valores na fórmula:</p>
+                <p>F = 5000 * (1 + 0.08/4)^(4*3)</p>
+                <p>F = 5000 * (1 + 0.02)^12</p>
+                <p>F ≈ 5000 * 1.26824</p>
+                <p>F ≈ 6,341.20</p>
+                <p>O montante devido após 3 anos será aproximadamente R$ 6.341,20.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Comparação com Outros Tipos de Juros</h2>
+            <p>Os juros compostos diferem dos juros simples principalmente na forma como são calculados e no impacto sobre o montante final de
+                um investimento ou dívida.
+
+                <ul>
+                    <li><strong>Juros Simples:</strong> São calculados apenas sobre o montante inicial do investimento ou empréstimo, sem levar em conta os juros acumulados ao longo do tempo.</li>
+                    <li><strong>Juros Compostos:</strong> Calculados não apenas sobre o valor inicial, mas também sobre os juros acumulados em cada período, resultando em um crescimento exponencial do investimento ou dívida ao longo do tempo.</li>
+                </ul>
+    
+                <p>Comparativamente, os juros compostos tendem a proporcionar um retorno maior sobre o investimento a longo prazo devido ao efeito da capitalização mais frequente dos juros.</p>
+            </section>
+    
+            <section class="section">
+                <h2>Conclusão</h2>
+                <p>Os juros compostos são um conceito fundamental em finanças e investimentos, oferecendo a oportunidade de crescimento exponencial do capital ao longo do tempo. Embora tenham suas vantagens e desvantagens, entender como os juros compostos funcionam é essencial para tomar decisões financeiras informadas e maximizar os retornos de investimentos a longo prazo.</p>
+            </section>
+    
+            <footer>
+                <p><a href="privacidade.html">Política de Privacidade</a> | <a href="index.html">Menu</a> | <a href="contato.html">Contato</a></p>
+                <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+            </footer>
+        </main>
+        <script>
+            function toggleDarkMode() {
+                const body = document.body;
+                const toggleButton = document.querySelector('.toggle-dark-mode');
+                const footer = document.querySelector('footer');
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                    body.style.backgroundColor = 'black';
+                    body.style.color = '#f5f5f5';
+                    toggleButton.textContent = '☀';
+                    footer.style.color = "#999";
+                } else {
+                    body.classList.add('dark-mode');
+                    body.style.backgroundColor = '#f5f5f5';
+                    body.style.color = '#222';
+                    toggleButton.textContent = '☾';
+                    footer.style.color = "#111";
+                }
+            }
+        </script>
+    </body>
+    </html>
+    
