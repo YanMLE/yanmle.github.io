@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853618235086140"
+     crossorigin="anonymous"></script>
+    <title>Menu de Blogs</title>
+    <style>
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0; 
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #111;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 9999;
+        }
+        .navbar .brand {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0 40px;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 10px;
+        }
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 40px;
+        }
+        .toggle-dark-mode:hover {
+            color: #1E90FF;
+        }
+        a {
+            color: #1E90FF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .welcome-text {
+            max-width: 800px;
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .welcome-text h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .welcome-text p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #FFD700;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .blog-links a {
+            display: block;
+            margin: 10px 0;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #2E2E2E;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .blog-links a:hover {
+            background-color: #FFD700;
+            color: #121212;
+        }
+        a {
+        color: #1E90FF;
+    }
+        footer {
+        text-align: center;
+        font-size: 0.8em;
+        color: #999;
+        margin-top: 20px;
+    }
+    label {
+    display: list-item;
+    margin-bottom: 5px;
+}
+        @media only screen and (max-width: 600px) {
+            .menu button {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">Menu de Blogs</div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
+    </div>
+    <div class="welcome-text">
+        <h1>Bem-vindo ao Menu de Blogs</h1>
+        <p>Bem-vindo ao nosso Menu de Blogs! Aqui, você encontrará uma série de artigos detalhados que explicam como cada cálculo disponível no site é realizado. Esses blogs abrangem uma variedade de tópicos, incluindo como calcular juros compostos, converter diferentes unidades de área, calcular volumes de diversas formas geométricas, e muitos outros.</p>
+        <p>Cada blog é projetado para fornecer uma compreensão completa e passo a passo dos métodos e fórmulas usados, garantindo que você possa seguir e aplicar esses cálculos por conta própria. Explore os links abaixo para acessar nossos blogs e aprimorar seu conhecimento em matemática e conversão de unidades.</p>
+        <div class="blog-links">
+            <a href="blogcompostos.html" class="compostos">Como Calcular Juros Compostos</a>
+            <a href="blogmedia.html" class="media">Como Calcular Média, Moda e Mediana</a>
+            <a href="blogpeso.html" class="peso">Como Converter Unidades de Peso</a>
+            <a href="blogarea.html" class="area">Como Converter Unidades de Área</a>
+            <a href="blogtemperatura.html" class="temperatura">Como Converter Unidades de Temperatura</a>
+        </div>
+    </div>
+    <footer>
+        <p><a href="privacidade.html">Política de Privacidade</a> | <a href="index.html">Menu</a> | <a href="contato.html">Contato</a></p>
+        <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+    function toggleDarkMode() {
+            const body = document.body;
+            const toggleButton = document.querySelector('.toggle-dark-mode');
+            const welcometext = document.querySelector('.welcome-text');
+            const welcomtext = document.querySelector('h1');
+            const compostos = document.querySelector('.compostos');
+            const area = document.querySelector('.area');
+            const volume = document.querySelector('.peso');
+            const media = document.querySelector('.media');
+            const temperatura = document.querySelector('.temperatura');
+            const footer = document.querySelector('footer');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.style.backgroundColor = '#222';
+                body.style.color = '#f5f5f5';
+                toggleButton.textContent = '☀';
+                welcometext.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                welcomtext.style.color = '#FFD700';
+                compostos.style.backgroundColor = '#2E2E2E';
+                compostos.onmouseover = function() { compostos.style.backgroundColor = '#FFD700'; };
+                compostos.onmouseleave = function() { compostos.style.backgroundColor = '#2E2E2E'; };
+                area.style.backgroundColor = '#2E2E2E';
+                area.onmouseover = function() { area.style.backgroundColor = '#FFD700'; };
+                area.onmouseleave = function() { area.style.backgroundColor = '#2E2E2E'; };
+                volume.style.backgroundColor = '#2E2E2E';
+                volume.onmouseover = function() { volume.style.backgroundColor = '#FFD700'; };
+                volume.onmouseleave = function() { volume.style.backgroundColor = '#2E2E2E'; };
+                media.style.backgroundColor = '#2E2E2E';
+                media.onmouseover = function() { media.style.backgroundColor = '#FFD700'; };
+                media.onmouseleave = function() { media.style.backgroundColor = '#2E2E2E'; };
+                temperatura.style.backgroundColor = '#2E2E2E';
+                temperatura.onmouseover = function() { temperatura.style.backgroundColor = '#FFD700'; };
+                temperatura.onmouseleave = function() { temperatura.style.backgroundColor = '#2E2E2E'; };
+                compostos.style.color = 'white';
+                area.style.color = 'white';
+                volume.style.color = 'white';
+                media.style.color = 'white';
+                temperatura.style.color = 'white';
+                footer.style.color = "#999";
+            } else {
+                body.classList.add('dark-mode');
+                body.style.backgroundColor = '#f5f5f5';
+                body.style.color = '#222';
+                toggleButton.textContent = '☾';
+                welcometext.style.backgroundColor = 'rgba(215, 215, 215, 0.5)';
+                welcomtext.style.color = 'black';
+                compostos.style.backgroundColor = '#FFD700';
+                compostos.onmouseover = function() { compostos.style.backgroundColor = '#C4A000'; };
+                compostos.onmouseleave = function() { compostos.style.backgroundColor = '#FFD700'; };
+                area.style.backgroundColor = '#FFD700';
+                area.onmouseover = function() { area.style.backgroundColor = '#C4A000'; };
+                area.onmouseleave = function() { area.style.backgroundColor = '#FFD700'; };
+                volume.style.backgroundColor = '#FFD700';
+                volume.onmouseover = function() { volume.style.backgroundColor = '#C4A000'; };
+                volume.onmouseleave = function() { volume.style.backgroundColor = '#FFD700'; };
+                media.style.backgroundColor = '#FFD700';
+                media.onmouseover = function() { media.style.backgroundColor = '#C4A000'; };
+                media.onmouseleave = function() { media.style.backgroundColor = '#FFD700'; };
+                temperatura.style.backgroundColor = '#FFD700';
+                temperatura.onmouseover = function() { temperatura.style.backgroundColor = '#C4A000'; };
+                temperatura.onmouseleave = function() { temperatura.style.backgroundColor = '#FFD700'; };
+                compostos.style.color = 'black';
+                area.style.color = 'black';
+                volume.style.color = 'black';
+                media.style.color = 'black';
+                temperatura.style.color = 'black';
+                footer.style.color = "#111";
+                }
+        }
+    </script>
+</body>
+</html>
