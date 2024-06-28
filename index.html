@@ -85,7 +85,16 @@
             font-size: 1.2em;
             margin-bottom: 20px;
         }
-        .section, .section2 {
+        .text-container {
+            max-width: 800px;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .section, .section2, .section3 {
             width: 100%;
             max-width: 1000px;
             margin: 40px 0;
@@ -95,7 +104,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             transition: background-color 0.3s;
         }
-        .section h1, .section2 h1 {
+        .section h1, .section2 h1, .section3 h1 {
             font-size: 2em;
             margin-bottom: 20px;
         }
@@ -116,14 +125,27 @@
             background-color: #007bff;
         }
         a {
-        color: #1E90FF;
-    }
+            color: #1E90FF;
+        }
+        .blog-links a {
+            display: block;
+            margin: 10px 0;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .blog-links a:hover {
+            background-color: #007bff;
+        }
         footer {
-        text-align: center;
-        font-size: 0.8em;
-        color: #999;
-        margin-top: 20px;
-    }
+            text-align: center;
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 20px;
+        }
         @media only screen and (max-width: 600px) {
             .menu button {
                 font-size: 1em;
@@ -145,26 +167,44 @@
         <p>Além disso, você pode alternar entre o modo diurno e noturno clicando no botão <button class="toggle">☀</button> no topo da página.</p>
     </div>
 
+    <div class="text-container">
+        Em outras páginas deste website, você encontrará uma série de blogs detalhados que explicam como cada cálculo disponível no site é realizado. Cada blog é projetado para fornecer uma compreensão completa e passo a passo dos métodos e fórmulas usados, garantindo que você possa seguir e aplicar esses cálculos por conta própria. Para acessar esses recursos valiosos e aprimorar seu conhecimento em matemática e conversão de unidades, visite nosso <a href="blogs.html">Menu de Blogs</a>. Lá, você encontrará uma lista completa de todos os blogs disponíveis, organizados por categoria e tema.
+    </div>
+    
+    
+
     <div id="calculadoras" class="section">
         <h1>Calculadoras</h1>
         <div class="menu">
-            <button class="basica"onclick="redirectTo('básica.html')">Calculadora Básica</button>
-            <button class="cientifica"onclick="redirectTo('científica.html')">Calculadora Científica</button>
-            <button class="compostos"onclick="redirectTo('compostos.html')">Calculadora de Juros Compostos</button>
-            <button class="data"onclick="redirectTo('data.html')">Calculadora de Data</button>
-            <button class="idade"onclick="redirectTo('idade.html')">Calculadora de Idade</button>
-            <button class="enem"onclick="redirectTo('enem.html')">Calculadora da Média do ENEM</button>
+            <button class="basica" onclick="redirectTo('básica.html')">Calculadora Básica</button>
+            <button class="cientifica" onclick="redirectTo('científica.html')">Calculadora Científica</button>
+            <button class="compostos" onclick="redirectTo('compostos.html')">Calculadora de Juros Compostos</button>
+            <button class="media" onclick="redirectTo('media.html')">Calculadora de Média, Moda e Mediana</button>
+            <button class="data" onclick="redirectTo('data.html')">Calculadora de Data</button>
+            <button class="idade" onclick="redirectTo('idade.html')">Calculadora de Idade</button>
+            <button class="enem" onclick="redirectTo('enem.html')">Calculadora da Média do ENEM</button>
         </div>
     </div>
 
     <div id="conversores" class="section2">
         <h1>Conversores</h1>
         <div class="menu2">
-            <button class="tempo"onclick="redirectTo('tempo.html')">Conversor de Tempo</button>
-            <button class="peso"onclick="redirectTo('peso.html')">Conversor de Peso</button>
-            <button class="temperatura"onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
-            <button class="comprimento"onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
-            <button class="moedas"onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
+            <button class="tempo" onclick="redirectTo('tempo.html')">Conversor de Tempo</button>
+            <button class="peso" onclick="redirectTo('peso.html')">Conversor de Peso</button>
+            <button class="temperatura" onclick="redirectTo('temperatura.html')">Conversor de Temperatura</button>
+            <button class="comprimento" onclick="redirectTo('comprimento.html')">Conversor de Comprimento</button>
+            <button class="moedas" onclick="redirectTo('moedas.html')">Conversor de Moedas</button>
+        </div>
+    </div>
+
+    <div id="blogs" class="section3">
+        <h1>Nossos Blogs:</h1>
+        <div class="blog-links">
+            <a href="blogcompostos.html" class="blogcompostos">Como Calcular Juros Compostos</a>
+            <a href="blogmedia.html" class="blogmedia">Como Calcular Média, Moda e Mediana</a>
+            <a href="blogpeso.html" class="blogpeso">Como Converter Unidades de Peso</a>
+            <a href="blogarea.html" class="blogarea">Como Converter Unidades de Área</a>
+            <a href="blogtemperatura.html" class="blogtemperatura">Como Converter Unidades de Temperatura</a>
         </div>
     </div>
     <footer>
@@ -181,13 +221,16 @@
             const toggleButton = document.querySelector('.toggle-dark-mode');
             const toggle = document.querySelector('.toggle');
             const welcometext = document.querySelector('.welcome-text');
+            const textcontainer = document.querySelector('.text-container');
             const section = document.querySelector('.section');
             const section2 = document.querySelector('.section2');
+            const section3 = document.querySelector('.section3');
             const básica = document.querySelector('.basica');
             const científica = document.querySelector('.cientifica');
             const data = document.querySelector('.data');
             const idade = document.querySelector('.idade');
             const enem = document.querySelector('.enem');
+            const media = document.querySelector('.media');
             const moedas = document.querySelector('.moedas');
             const tempo = document.querySelector('.tempo');
             const peso = document.querySelector('.peso');
@@ -195,6 +238,11 @@
             const comprimento = document.querySelector('.comprimento');
             const compostos = document.querySelector('.compostos');
             const footer = document.querySelector('footer');
+            const blogcompostos = document.querySelector('.blogcompostos');
+            const blogarea = document.querySelector('.blogarea');
+            const blogmedia = document.querySelector('.blogmedia');
+            const blogpeso = document.querySelector('.blogpeso');
+            const blogtemperatura = document.querySelector('.blogtemperatura');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 body.style.backgroundColor = '#222';
@@ -205,14 +253,19 @@
                 toggle.style.color = 'white';
                 footer.style.color = "#999";
                 welcometext.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                textcontainer.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
                 section.style.backgroundColor = '#333';
                 section2.style.backgroundColor = '#333';
+                section3.style.backgroundColor = '#333';
                 básica.style.backgroundColor = '#444';
                 básica.onmouseover = function() { básica.style.backgroundColor = '#007bff'; };
                 básica.onmouseleave = function() { básica.style.backgroundColor = '#444'; };
                 científica.style.backgroundColor = '#444';
                 científica.onmouseover = function() { científica.style.backgroundColor = '#007bff'; };
                 científica.onmouseleave = function() { científica.style.backgroundColor = '#444'; };
+                media.style.backgroundColor = '#444';
+                media.onmouseover = function() { media.style.backgroundColor = '#007bff'; };
+                media.onmouseleave = function() { media.style.backgroundColor = '#444'; };
                 compostos.style.backgroundColor = '#444';
                 compostos.onmouseover = function() { compostos.style.backgroundColor = '#007bff'; };
                 compostos.onmouseleave = function() { compostos.style.backgroundColor = '#444'; };
@@ -240,6 +293,21 @@
                 comprimento.style.backgroundColor = '#444';
                 comprimento.onmouseover = function() { comprimento.style.backgroundColor = '#007bff'; };
                 comprimento.onmouseleave = function() { comprimento.style.backgroundColor = '#444'; };
+                blogcompostos.style.backgroundColor = '#444';
+                blogcompostos.onmouseover = function() { blogcompostos.style.backgroundColor = '#007bff'; };
+                blogcompostos.onmouseleave = function() { blogcompostos.style.backgroundColor = '#444'; };
+                blogarea.style.backgroundColor = '#444';
+                blogarea.onmouseover = function() { blogarea.style.backgroundColor = '#007bff'; };
+                blogarea.onmouseleave = function() { blogarea.style.backgroundColor = '#444'; };
+                blogmedia.style.backgroundColor = '#444';
+                blogmedia.onmouseover = function() { blogmedia.style.backgroundColor = '#007bff'; };
+                blogmedia.onmouseleave = function() { blogmedia.style.backgroundColor = '#444'; };
+                blogpeso.style.backgroundColor = '#444';
+                blogpeso.onmouseover = function() { blogpeso.style.backgroundColor = '#007bff'; };
+                blogpeso.onmouseleave = function() { blogpeso.style.backgroundColor = '#444'; };
+                blogtemperatura.style.backgroundColor = '#444';
+                blogtemperatura.onmouseover = function() { blogtemperatura.style.backgroundColor = '#007bff'; };
+                blogtemperatura.onmouseleave = function() { blogtemperatura.style.backgroundColor = '#444'; };
                 toggleButton.style.transition = 'color 0.3s';
                 toggleButton.onmouseover = function() { toggleButton.style.color = '#1E90FF'; };
                 toggleButton.onmouseleave = function() { toggleButton.style.color = 'white'; };
@@ -253,11 +321,16 @@
                 toggle.style.backgroundColor = '#f5f5f5';
                 toggle.style.color = 'black';
                 welcometext.style.backgroundColor = 'rgba(215, 215, 215, 0.5)';
+                textcontainer.style.backgroundColor = 'rgba(215, 215, 215, 0.5)';
                 section.style.backgroundColor = 'white';
                 section2.style.backgroundColor = 'white';
+                section3.style.backgroundColor = 'white';
                 básica.style.backgroundColor = '#007bff';
                 básica.onmouseover = function() { básica.style.backgroundColor = '#0056b3'; };
                 básica.onmouseleave = function() { básica.style.backgroundColor = '#007bff'; };
+                media.style.backgroundColor = '#007bff';
+                media.onmouseover = function() { media.style.backgroundColor = '#0056b3'; };
+                media.onmouseleave = function() { media.style.backgroundColor = '#007bff'; };
                 científica.style.backgroundColor = '#007bff';
                 científica.onmouseover = function() { científica.style.backgroundColor = '#0056b3'; };
                 científica.onmouseleave = function() { científica.style.backgroundColor = '#007bff'; };
@@ -288,6 +361,21 @@
                 comprimento.style.backgroundColor = '#007bff';
                 comprimento.onmouseover = function() { comprimento.style.backgroundColor = '#0056b3'; };
                 comprimento.onmouseleave = function() { comprimento.style.backgroundColor = '#007bff'; };
+                blogcompostos.style.backgroundColor = '#007bff';
+                blogcompostos.onmouseover = function() { blogcompostos.style.backgroundColor = '#0056b3'; };
+                blogcompostos.onmouseleave = function() { blogcompostos.style.backgroundColor = '#007bff'; };
+                blogarea.style.backgroundColor = '#007bff';
+                blogarea.onmouseover = function() { blogarea.style.backgroundColor = '#0056b3'; };
+                blogarea.onmouseleave = function() { blogarea.style.backgroundColor = '#007bff'; };
+                blogmedia.style.backgroundColor = '#007bff';
+                blogmedia.onmouseover = function() { blogmedia.style.backgroundColor = '#0056b3'; };
+                blogmedia.onmouseleave = function() { blogmedia.style.backgroundColor = '#007bff'; };
+                blogpeso.style.backgroundColor = '#007bff';
+                blogpeso.onmouseover = function() { blogpeso.style.backgroundColor = '#0056b3'; };
+                blogpeso.onmouseleave = function() { blogpeso.style.backgroundColor = '#007bff'; };
+                blogtemperatura.style.backgroundColor = '#007bff';
+                blogtemperatura.onmouseover = function() { blogtemperatura.style.backgroundColor = '#0056b3'; };
+                blogtemperatura.onmouseleave = function() { blogtemperatura.style.backgroundColor = '#007bff'; };
                 toggleButton.style.transition = 'color 0.3s';
                 toggleButton.onmouseover = function() { toggleButton.style.color = '#1E90FF'; };
                 toggleButton.onmouseleave = function() { toggleButton.style.color = 'white'; };
