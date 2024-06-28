@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853618235086140"
+     crossorigin="anonymous"></script>
+<title>Calculadora de Média, Moda e Mediana</title>
+<style>
+    body {
+        background-color: #000;
+        color: #ccc;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    label {
+        font-weight: bold;
+    }
+    a {
+        color: #1E90FF;
+    }
+    a {
+            color: #1E90FF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .container {
+        width: 350px;
+        margin: 100px auto;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    button:hover {
+        background-color: #1E90FF;
+    }
+    .result {
+        margin-top: 20px;
+    }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
+
+    .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .content {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+    footer {
+            text-align: center;
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+    .container {
+        width: 90%; 
+        margin: 50px auto; 
+    }
+    }
+</style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+        <a href="index.html">Menu</a>
+        <a href="blogs.html">Menu de Blogs</a>
+        <a href="básica.html">Calculadora Básica</a>
+        <a href="científica.html">Calculadora Científica</a>
+        <a href="compostos.html">Calculadora de Juros Compostos</a>
+        <a href="data.html">Calculadora de Data</a>
+        <a href="idade.html">Calculadora de Idade</a>
+        <a href="enem.html">Calculadora da Média do ENEM</a>
+        <a href="tempo.html">Conversor de Tempo</a>
+        <a href="peso.html">Conversor de Peso</a>
+        <a href="temperatura.html">Conversor de Temperatura</a>
+        <a href="comprimento.html">Conversor de Comprimento</a>
+        <a href="comprimento.html"></a>
+        <a href="comprimento.html"></a>
+        <a href="comprimento.html"></a>
+        <a href="comprimento.html"></a>
+    </div>
+    
+    <div class="content" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776;</span>
+
+    <div class="container">
+        <h1>Calculadora da Média, Moda e Mediana de um Conjunto de Números</h1>
+        <label for="numbers">Digite os números separados por vírgula:</label>
+        <input type="text" id="numbers">
+        <button onclick="analyzeNumbers()">Analisar</button>
+        <div class="result" id="result">
+        </div>
+    </div>
+
+    <header>
+        <h1>Estatística</h1>
+        <p>Entenda como calcular Média, Moda e Mediana</p>
+    </header>
+    <main>
+        <article>
+            <h2>Como Calcular Média, Moda e Mediana</h2>
+            <p>Neste artigo, vamos explicar como calcular três medidas estatísticas importantes: média, moda e mediana.</p>
+
+            <section>
+                <h3>Média</h3>
+                <p>A média é calculada somando todos os valores de um conjunto de dados e dividindo pelo número total de valores.</p>
+                <p>Fórmula da média:</p>
+                <pre> Média = (soma dos valores) / (número de valores)</pre>
+                <p>Exemplo:</p>
+                <pre> Dados: 3, 5, 7, 10, 15
+ Média = (3 + 5 + 7 + 10 + 15) / 5
+ Média = 8</pre>
+            </section>
+
+            <section>
+                <h3>Moda</h3>
+                <p>A moda é o valor que mais se repete em um conjunto de dados.</p>
+                <p>Exemplo:</p>
+                <pre> Dados: 2, 3, 3, 5, 5, 5, 7
+ Moda = 5 (porque 5 é o valor que mais se repete)</pre>
+            </section>
+
+            <section>
+                <h3>Mediana</h3>
+                <p>A mediana é o valor que divide o conjunto de dados em duas metades iguais, quando os dados estão ordenados.</p>
+                <p>Exemplo:</p>
+                <pre> Dados: 2, 4, 6, 8, 10
+ Mediana = 6 (porque é o valor do meio)</pre>
+                <p>Quando o conjunto de dados tem um número par de elementos, a mediana é a média dos dois valores do meio.</p>
+                <p>Exemplo:</p>
+                <pre> Dados: 1, 3, 5, 7
+ Mediana = (3 + 5) / 2
+ Mediana = 4</pre>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p><a href="privacidade.html">Política de Privacidade</a> | <a href="contato.html">Contato</a></p>
+        <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+        document.getElementById("content").style.marginLeft = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+    }
+
+        function analyzeNumbers() {
+            let numbersInput = document.getElementById('numbers').value.trim();
+            
+            if (numbersInput === '') {
+                alert('Por favor, digite pelo menos um número.');
+                return;
+            }
+            
+            let numbersArray = numbersInput.split(',').map(num => parseFloat(num.trim()));
+            
+            let average = numbersArray.reduce((acc, val) => acc + val, 0) / numbersArray.length;
+            
+            let counts = {};
+            numbersArray.forEach(num => {
+                counts[num] = (counts[num] || 0) + 1;
+            });
+            let mode = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+            
+            numbersArray.sort((a, b) => a - b);
+            let median;
+            if (numbersArray.length % 2 === 0) {
+                median = (numbersArray[numbersArray.length / 2 - 1] + numbersArray[numbersArray.length / 2]) / 2;
+            } else {
+                median = numbersArray[Math.floor(numbersArray.length / 2)];
+            }
+            
+            let resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h3>Resultados:</h3>
+                <p><strong>Média:</strong> ${average}</p>
+                <p><strong>Moda:</strong> ${mode}</p>
+                <p><strong>Mediana:</strong> ${median}</p>
+                <p><strong>Números em ordem:</strong> {${numbersArray.join(', ')}}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
