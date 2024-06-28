@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Converter Unidades de Área</title>
+    <style>
+        body {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            text-align: left;
+            margin-top: 80px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 18px; 
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #111;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 9999;
+        }
+        .navbar .brand {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0 40px;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1em; 
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 40px;
+        }
+        .toggle-dark-mode:hover {
+            color: #1E90FF;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        a {
+            color: #1E90FF;
+            font-size: 1em; 
+        }
+        section {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    
+    section h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    section p {
+        text-align: left;
+        font-size: 1em; 
+    }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: black;
+        }
+        button {
+            background-color: #1E90FF;
+            font-size: 1em; 
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .esquerda {
+            align-items: left;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: black;
+        }
+        footer {
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">Calculadora Braba</div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
+    </div>
+        <h2>Introdução</h2>
+    <section>
+        <p>Converter unidades de área é uma habilidade útil em várias situações, como na construção civil, na agricultura e em diversas áreas da ciência. Este blog irá guiá-lo pelo processo de conversão entre diferentes unidades de área.</p>
+        <h2>Unidades Comuns de Área</h2>
+        <p>As unidades de área mais comuns incluem:</p>
+        <ul>
+            <li>Metros quadrados (m²)</li>
+            <li>Centímetros quadrados (cm²)</li>
+            <li>Quilômetros quadrados (km²)</li>
+            <li>Hectares (ha)</li>
+            <li>Ares (a)</li>
+            <li>Pés quadrados (ft²)</li>
+            <li>Acres</li>
+        </ul>
+    </section>
+        <h2>Tabela de Conversão</h2>
+        <p>Para facilitar a conversão, veja a tabela abaixo:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="thh1">Unidade</th>
+                    <th class ="thh2">Equivalente em m²</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 cm²</td>
+                    <td>0,0001 m²</td>
+                </tr>
+                <tr>
+                    <td>1 m²</td>
+                    <td>1 m²</td>
+                </tr>
+                <tr>
+                    <td>1 km²</td>
+                    <td>1.000.000 m²</td>
+                </tr>
+                <tr>
+                    <td>1 ha</td>
+                    <td>10.000 m²</td>
+                </tr>
+                <tr>
+                    <td>1 a</td>
+                    <td>100 m²</td>
+                </tr>
+                <tr>
+                    <td>1 ft²</td>
+                    <td>0,092903 m²</td>
+                </tr>
+                <tr>
+                    <td>1 acre</td>
+                    <td>4.046,86 m²</td>
+                </tr>
+            </tbody>
+        </table>
+    <section>
+        <h2>Fórmulas de Conversão</h2>
+        <p>Para converter entre unidades de área, você pode usar as seguintes fórmulas:</p>
+        <ul>
+            <li><strong>De cm² para m²:</strong> Divida o valor em cm² por 10.000.</li>
+            <li><strong>De m² para km²:</strong> Divida o valor em m² por 1.000.000.</li>
+            <li><strong>De ha para m²:</strong> Multiplique o valor em hectares por 10.000.</li>
+            <li><strong>De ft² para m²:</strong> Multiplique o valor em pés quadrados por 0,092903.</li>
+            <li><strong>De acres para m²:</strong> Multiplique o valor em acres por 4.046,86.</li>
+        </ul>
+    </section>
+    <section>
+            <h3>Exercícios</h3>
+            <p>Tente resolver os seguintes exercícios:</p>
+            <ol>
+                <li>Converta 500 cm² para m².</li>
+                <li>Converta 2 hectares para m².</li>
+                <li>Converta 1500 pés quadrados para m².</li>
+            </ol>
+            <button onclick="mostrarRespostas()">Mostrar Respostas</button>
+            <div id="respostas" style="display: none;">
+                <p>Respostas:</p>
+                <ol>
+                    <li>500 cm² ÷ 10.000 = 0,05 m²</li>
+                    <li>2 ha × 10.000 = 20.000 m²</li>
+                    <li>1500 ft² × 0,092903 = 139,3545 m²</li>
+                </ol>
+            </div>
+    </section>
+
+        <h2>Conclusão</h2>
+        <p>Converter unidades de área é simples quando se tem as fórmulas corretas e uma tabela de referência. Esperamos que este guia tenha sido útil para você. Se tiver dúvidas, sinta-se à vontade para deixar um comentário!</p>
+        <footer>
+            <p><a href="privacidade.html">Política de Privacidade</a> | <a href="index.html">Menu</a> | <a href="contato.html">Contato</a></p>
+            <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+        </footer>
+        <script>
+            function toggleDarkMode() {
+                const body = document.body;
+                const toggleButton = document.querySelector('.toggle-dark-mode');
+                const footer = document.querySelector('footer');
+                const tr = document.querySelector('.thh1')
+                const tr2 = document.querySelector('.thh2')
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                    body.style.backgroundColor = 'black';
+                    tr.style.backgroundColor = 'black';
+                    tr2.style.backgroundColor = 'black';
+                    body.style.color = '#f5f5f5';
+                    toggleButton.textContent = '☀';
+                    footer.style.color = "#999";
+                } else {
+                    body.classList.add('dark-mode');
+                    body.style.backgroundColor = '#f5f5f5';
+                    tr.style.backgroundColor = '#f5f5f5';
+                    tr2.style.backgroundColor = '#f5f5f5';
+                    body.style.color = '#222';
+                    toggleButton.textContent = '☾';
+                    footer.style.color = "#111";
+                }
+            }
+    
+            function mostrarRespostas() {
+                var respostas = document.getElementById('respostas');
+                if (respostas.style.display === 'none') {
+                    respostas.style.display = 'block';
+                } else {
+                    respostas.style.display = 'none';
+                }
+            }
+        </script>
+</body>
+</html>
