@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Converter Unidades de Temperatura</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2853618235086140"
+     crossorigin="anonymous"></script>
+    <style>
+        body {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            text-align: left;
+            margin-top: 80px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 18px; 
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #111;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 9999;
+        }
+        .navbar .brand {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0 40px;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1em; 
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+            margin: 0 40px;
+        }
+        .toggle-dark-mode:hover {
+            color: #1E90FF;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        a {
+            color: #1E90FF;
+            font-size: 1em; 
+        }
+        section {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    
+    section h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    section p {
+        text-align: left;
+        font-size: 1em; 
+    }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: black;
+        }
+        button {
+            background-color: #1E90FF;
+            font-size: 1em; 
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        footer {
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">Calculadora Braba</div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">☀</button>
+    </div>
+        <h2>Conversão de Unidades de Temperatura</h2>
+    <main>
+        <section>
+            <h2>Converter Celsius para Fahrenheit</h2>
+            <p>
+                Para converter Celsius (°C) para Fahrenheit (°F), use a fórmula:
+            </p>
+            <p>
+                <code>°F = (°C × 9/5) + 32</code>
+            </p>
+            <p>
+                Por exemplo, para converter 25°C para Fahrenheit:
+            </p>
+            <p>
+                <code>°F = (25 × 9/5) + 32 = 77°F</code>
+            </p>
+        </section>
+        <section>
+            <h2>Converter Fahrenheit para Celsius</h2>
+            <p>
+                Para converter Fahrenheit (°F) para Celsius (°C), use a fórmula:
+            </p>
+            <p>
+                <code>°C = (°F - 32) × 5/9</code>
+            </p>
+            <p>
+                Por exemplo, para converter 77°F para Celsius:
+            </p>
+            <p>
+                <code>°C = (77 - 32) × 5/9 = 25°C</code>
+            </p>
+        </section>
+        <section>
+            <h2>Converter Celsius para Kelvin</h2>
+            <p>
+                Para converter Celsius (°C) para Kelvin (K), use a fórmula:
+            </p>
+            <p>
+                <code>K = °C + 273.15</code>
+            </p>
+            <p>
+                Por exemplo, para converter 25°C para Kelvin:
+            </p>
+            <p>
+                <code>K = 25 + 273.15 = 298.15K</code>
+            </p>
+        </section>
+        <section>
+            <h2>Converter Kelvin para Celsius</h2>
+            <p>
+                Para converter Kelvin (K) para Celsius (°C), use a fórmula:
+            </p>
+            <p>
+                <code>°C = K - 273.15</code>
+            </p>
+            <p>
+                Por exemplo, para converter 298.15K para Celsius:
+            </p>
+            <p>
+                <code>°C = 298.15 - 273.15 = 25°C</code>
+            </p>
+        </section>
+        <section>
+            <h2>Converter Fahrenheit para Kelvin</h2>
+            <p>
+                Para converter Fahrenheit (°F) para Kelvin (K), use a fórmula:
+            </p>
+            <p>
+                <code>K = (°F - 32) × 5/9 + 273.15</code>
+            </p>
+            <p>
+                Por exemplo, para converter 77°F para Kelvin:
+            </p>
+            <p>
+                <code>K = (77 - 32) × 5/9 + 273.15 = 298.15K</code>
+            </p>
+        </section>
+        <section>
+            <h2>Converter Kelvin para Fahrenheit</h2>
+            <p>
+                Para converter Kelvin (K) para Fahrenheit (°F), use a fórmula:
+            </p>
+            <p>
+                <code>°F = (K - 273.15) × 9/5 + 32</code>
+            </p>
+            <p>
+                Por exemplo, para converter 298.15K para Fahrenheit:
+            </p>
+            <p>
+                <code>°F = (298.15 - 273.15) × 9/5 + 32 = 77°F</code>
+            </p>
+        </section>
+        <section>
+            <h2>Importância da Conversão de Temperatura</h2>
+            <p>
+                A conversão de unidades de temperatura é fundamental em diversos campos, como na ciência, na engenharia, na meteorologia e na vida cotidiana. Por exemplo, cientistas e engenheiros frequentemente precisam converter temperaturas ao realizar experimentos ou projetar equipamentos que operam em diferentes escalas de temperatura. Na meteorologia, a conversão é crucial para comparar dados de diferentes regiões do mundo.
+            </p>
+            <p>
+                No cotidiano, entender como converter temperaturas pode ser útil ao viajar para países que utilizam unidades diferentes ou ao cozinhar receitas que fornecem temperaturas em uma escala diferente da que você está acostumado. A compreensão das conversões ajuda a evitar erros e a garantir a precisão em diversas atividades.
+            </p>
+            <p>
+                Além disso, aprender a converter entre diferentes unidades de temperatura pode ajudar a melhorar suas habilidades matemáticas e sua compreensão geral das ciências físicas. Com as informações e exercícios fornecidos neste site, esperamos que você possa dominar a arte da conversão de temperaturas de maneira eficaz e precisa.
+            </p>
+        </section>
+        <section>
+            <h3>Exercícios</h3>
+            <p>Tente resolver os seguintes exercícios:</p>
+            <ol>
+                <li>Converta 100°C para Fahrenheit.</li>
+                <li>Converta 32°F para Celsius.</li>
+                <li>Converta 0°C para Kelvin.</li>
+                <li>Converta 300K para Celsius.</li>
+                <li>Converta 451°F para Kelvin.</li>
+                <li>Converta 0K para Fahrenheit.</li>
+            </ol>
+            <button onclick="mostrarRespostas()">Mostrar Respostas</button>
+            <div id="respostas" style="display: none;">
+                <p>Respostas:</p>
+                <ol>
+                    <li>°F = (100 × 9/5) + 32 = 212°F</li>
+                    <li>°C = (32 - 32) × 5/9 = 0°C</li>
+                    <li>K = 0 + 273.15 = 273.15K</li>
+                    <li>°C = 300 - 273.15 = 26.85°C</li>
+                    <li>K = (451 - 32) × 5/9 + 273.15 = 505.37K</li>
+                    <li>°F = (0 - 273.15) × 9/5 + 32 = -459.67°F</li>
+                </ol>
+            </div>
+    </section>
+    </main>
+    <footer>
+        <p><a href="privacidade.html">Política de Privacidade</a> | <a href="index.html">Menu</a> | <a href="contato.html">Contato</a></p>
+        <p>&copy; 2024 calculadorabraba.com.br. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggleButton = document.querySelector('.toggle-dark-mode');
+            const footer = document.querySelector('footer');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.style.backgroundColor = 'black';
+                body.style.color = '#f5f5f5';
+                toggleButton.textContent = '☀';
+                footer.style.color = "#999";
+            } else {
+                body.classList.add('dark-mode');
+                body.style.backgroundColor = '#f5f5f5';
+                body.style.color = '#222';
+                toggleButton.textContent = '☾';
+                footer.style.color = "#111";
+            }
+        }
+
+        function mostrarRespostas() {
+            var respostas = document.getElementById('respostas');
+            if (respostas.style.display === 'none') {
+                respostas.style.display = 'block';
+            } else {
+                respostas.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
